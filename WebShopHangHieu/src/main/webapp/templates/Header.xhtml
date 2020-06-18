@@ -1,7 +1,8 @@
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <header id="myheader">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
                     <a class="navbar-brand" href="index.html">LOGO</a>
@@ -17,11 +18,13 @@
 
                   <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Giày
+                      Danh mục
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="product.html">Giày</a>
-                      <a class="dropdown-item" href="product.html">Giày</a>
+                      
+                        <c:forEach var="cate" items="#{cateBean.category}">
+                            <a class="dropdown-item" href="product?cate_id=#{cate.id}">#{cate.name}</a>
+                      </c:forEach>
                       
                     </div>
                   </li>

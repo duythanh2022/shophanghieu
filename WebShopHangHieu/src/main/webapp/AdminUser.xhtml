@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+                        xmlns:h="http://xmlns.jcp.org/jsf/html"
+                        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                        xmlns:f="http://xmlns.jcp.org/jsf/core"
+                        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>User</title>
+    </h:head>
+    <h:body>
+         <ui:composition template="templates/AdminBase.xhtml"
+                         >
+                               <ui:define name="AdminCategory">
+                 <div class="right-ad">
+<!--                    <div class="button-contro">
+                            <h:link value="Add Category" styleClass="btn btn-outline-success"
+                                data-toggle="modal" data-target="#myModal"></h:link>
+                        <h:link value="Add" styleClass="btn btn-info"
+                                           includeViewParams="true"
+                                       outcome="AdminProductDetail?faces-redirect=true">
+                                      
+                        </h:link>
+                    </div>-->
+                    <div>
+                        <h:dataTable var="user" 
+                                     value="#{userBean.users}" 
+                                     styleClass="table table-striped" 
+                                     id="Table"
+                                     >
+                           <h:column >
+                               <f:facet name="header">Email</f:facet>
+                               #{user.email}
+                           </h:column>
+                           <h:column>
+                               <f:facet name="header">name</f:facet>
+                               #{user.userDetail.fullname}
+                           </h:column>
+                           <h:column>
+                               <f:facet name="header">Phone</f:facet>
+                               #{user.userDetail.phone}
+                           </h:column>
+                            <h:column>
+                               <f:facet name="header">Address</f:facet>
+                               #{user.userDetail.address}
+                           </h:column>
+                            <h:column>
+                               <f:facet name="header">Roll</f:facet>
+                              
+                               <c:if test="#{user.roll==0}">
+                                   <f:facet name="header">ADmin</f:facet>
+                               </c:if>
+                               <c:if test=" #{user.roll}==1">
+                                   da kich hoat
+                               </c:if>
+                               <c:if test=" #{user.roll}==2">
+                                   chua kich hoat
+                               </c:if>
+                           </h:column>
+                            
+                           <h:column>
+                               <f:facet name="header">Action</f:facet>
+                               <h:form styleClass="form-inline">
+                                   <h:link value="Detail" styleClass="btn btn-info"
+                                           includeViewParams="true"
+                                       outcome="AdminProductDetail?faces-redirect=true">
+                                       <!--<f:param name="product_id" value="${pro.id}"/>-->
+                                   </h:link>
+
+                                  
+                               </h:form>
+                           </h:column>
+                       </h:dataTable>
+                        
+                    </div>
+                </div>
+<!--                                <script>
+                            function deleteSuccess(){
+                             
+                              alert("Xoa thanh cong");
+                                
+                            }
+                            function deleteError(){
+                                alert("Xoa that bai");
+                            }
+                            function hiddenRow(obj){
+                                 $(obj).parents().hide();
+                            }
+                        </script>   -->
+             </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

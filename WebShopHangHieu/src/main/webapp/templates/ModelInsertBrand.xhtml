@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Add Category
+    </button>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <h:form >
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Add Brand</h4>
+            <button type="button" class="close" data-dismiss="modal">x</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+              <div class="form-group ">
+                  <label for="txtname">Name</label>
+                  <h:inputText id="txtname" value="#{brandBean.nameBr}" styleClass="form-control" ></h:inputText>
+<!--                  <div class="valid-feedback">Valid.</div>
+                  <div class="invalid-feedback">Please fill out this field.</div>-->
+              </div>
+              
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+              <h:commandButton value="Thêm" styleClass="btn btn-outline-success" 
+                               action="#{brandBean.addBrand()}"></h:commandButton>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+          </h:form>
+        </div>
+      </div>
+    </div>
+</ui:composition>
+                

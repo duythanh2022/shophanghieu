@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <div class="right-ad">
+        <div class="button-contro">
+<!--                <h:link value="Add Category" styleClass="btn btn-outline-success"
+                    data-toggle="modal" data-target="#myModal"></h:link>-->
+            <ui:insert name="ModelInsertPro">
+                <ui:include src="ModelInsertPro.xhtml"></ui:include>
+            </ui:insert>
+        </div>
+        <div>
+            <h:dataTable var="pro" value="#{productBean.product}" styleClass="table table-striped">
+               <h:column>
+                   <f:facet name="header">ID</f:facet>
+                   #{pro.id}
+               </h:column>
+               <h:column>
+                   <f:facet name="header">name</f:facet>
+                   #{pro.name}
+               </h:column>
+               <h:column>
+                   <f:facet name="header">color</f:facet>
+                   #{pro.color}
+               </h:column>
+                <h:column>
+                   <f:facet name="header">Category</f:facet>
+                   #{pro.category.name}
+               </h:column>
+                <h:column>
+                   <f:facet name="header">Price</f:facet>
+                   #{pro.price}
+               </h:column>
+                <h:column>
+                   <f:facet name="header">sale</f:facet>
+                   #{pro.sell}
+               </h:column>
+                <h:column>
+                   <f:facet name="header">Amount</f:facet>
+                   #{pro.amount}
+               </h:column>
+               <h:column>
+                   <f:facet name="header">Action</f:facet>
+                   <h:form styleClass="form-inline">
+                       <h:link value="Update" styleClass="btn btn-info"></h:link>
+
+                   <h:commandLink value="Delete" styleClass="btn btn-danger">
+
+                           <f:ajax/>
+
+                   </h:commandLink>
+                   </h:form>
+               </h:column>
+           </h:dataTable>
+        </div>
+    </div>
+
+
+</ui:composition>

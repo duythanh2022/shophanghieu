@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.webshophanghieu.Entity;
+package com.mycompany.webshophanghieu.Pojo;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -18,29 +19,20 @@ import javax.persistence.Table;
  * @author Admin
  */
 @Entity
-@Table(name = "brand")
-public class Brand implements Serializable{
+@Table(name="order_detail")
+public class OrderDetail implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
     
-    private String name;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    @ManyToOne
+    @JoinColumn(name="order_id")
+    private Order order;
     
+    @ManyToOne
+    @JoinColumn(name="product_id")
+    private Product product;
+    private long unitPrice;
+    private int amountDetail;
+    private long totalDetail;
 }

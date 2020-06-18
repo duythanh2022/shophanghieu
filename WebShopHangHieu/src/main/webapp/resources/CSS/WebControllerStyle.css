@@ -1,0 +1,44 @@
+div.adminbase{
+	display: flex;
+}
+div.left-ad{
+	width: 20%;
+	height: 100%;
+	background-color: lightblue;
+}
+div.left-ad>ul{
+	margin: 0;
+        padding: 10px; 
+}
+
+div.left-ad>ul>li{
+	list-style-type: none;
+	padding: 10px;
+	margin: 0;
+}
+div.left-ad>ul>li>a{
+	display: block;
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+	text-decoration: none; 
+}
+div.left-ad>ul>li>a:hover{
+	background-color: blue;
+	color: white;
+}
+a{
+	text-decoration: none;
+}
+div.right-ad{
+	width: 80%;
+}
+div.right-ad>table{
+	margin: 10px;
+	width: 100%;
+
+}
+
+div.button-contro{
+	padding: 10px ;
+}

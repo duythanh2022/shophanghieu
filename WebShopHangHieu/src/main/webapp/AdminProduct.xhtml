@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+                        xmlns:h="http://xmlns.jcp.org/jsf/html"
+                        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                        xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Product</title>
+    </h:head>
+    <h:body>
+         <ui:composition template="templates/AdminBase.xhtml"
+                         >
+                               <ui:define name="AdminCategory">
+                 <div class="right-ad">
+                    <div class="button-contro">
+            <!--                <h:link value="Add Category" styleClass="btn btn-outline-success"
+                                data-toggle="modal" data-target="#myModal"></h:link>-->
+                        <h:link value="Add" styleClass="btn btn-info"
+                                           includeViewParams="true"
+                                       outcome="AdminProductDetail?faces-redirect=true">
+                                      
+                        </h:link>
+                    </div>
+                    <div>
+                        <h:dataTable var="pro" 
+                                     value="#{productBean.product}" 
+                                     styleClass="table table-striped" 
+                                     id="Table"
+                                     >
+                           <h:column >
+                               <f:facet name="header">ID</f:facet>
+                               #{pro.id}
+                           </h:column>
+                           <h:column>
+                               <f:facet name="header">name</f:facet>
+                               #{pro.name}
+                           </h:column>
+                           <h:column>
+                               <f:facet name="header">color</f:facet>
+                               #{pro.color}
+                           </h:column>
+                            <h:column>
+                               <f:facet name="header">Category</f:facet>
+                               #{pro.category.name}
+                           </h:column>
+                            <h:column>
+                               <f:facet name="header">Price</f:facet>
+                               #{pro.price}
+                           </h:column>
+                            <h:column>
+                               <f:facet name="header">sale</f:facet>
+                               #{pro.sell}
+                           </h:column>
+                            <h:column>
+                               <f:facet name="header">Amount</f:facet>
+                               #{pro.amount}
+                           </h:column>
+                           <h:column>
+                               <f:facet name="header">Action</f:facet>
+                               <h:form styleClass="form-inline">
+                                   <h:link value="Update" styleClass="btn btn-info"
+                                           includeViewParams="true"
+                                       outcome="AdminProductDetail?faces-redirect=true">
+                                       <f:param name="product_id" value="${pro.id}"/>
+                                   </h:link>
+
+                                   <h:commandLink value="Delete" styleClass="btn btn-danger" >
+
+                                   <f:ajax listener="#{productBean.deleteProduct(pro)}"
+                                           onevent="deleteSuccess"
+                                           onerror="deleteError" />
+
+                               </h:commandLink>
+                               </h:form>
+                           </h:column>
+                       </h:dataTable>
+                        
+                    </div>
+                </div>
+                                <script>
+                            function deleteSuccess(){
+                             
+                              alert("Xoa thanh cong");
+                                
+                            }
+                            function deleteError(){
+                                alert("Xoa that bai");
+                            }
+                            function hiddenRow(obj){
+                                 $(obj).parents().hide();
+                            }
+                        </script>   
+             </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

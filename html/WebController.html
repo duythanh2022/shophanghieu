@@ -4,14 +4,118 @@
 	<title>Quản lý Website</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="WebControllerStyle.css">
+
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
- 	
- 	
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+	<div class="contenter">
+		<div class="left">
+			<ul>
+				<li>
+					<a href="">Home</a>
+				</li>
+				<li>
+					<a href="">Product</a>
+				</li>
+				<li>
+					<a href="">User</a>
+				</li>
+				<li>
+					<a href="">Order</a>
+				</li>
+				<li>
+					<a href="">Thống kê</a>
+				</li>
+			</ul>
+		</div>
+		<div class="right">
+			<div class="button-contro">
+				
+				<button class="btn btn-primary" data-toggle="modal" data-target="#modelAdd">Add Product</button>
+				<button class="btn btn-success">Status</button>
+				<button class="btn btn-dark">Sale</button>
+			
+			
+				<button class="btn btn-primary">Category</button>
+				<button class="btn btn-primary">Brand</button>
+				
+			</div>
+			<table class="table table-striped">
+				<tr>
+					<td></td>
+					<td>ID</td>
+					<td>Name</td>
+					<td>Category</td>
+					<td>Brand</td>
+					<td>Price</td>
+					<td>Image</td>
+					<td>Status</td>
+					<td>Action</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name=""></td>
+					<td>1</td>
+					<td>ABC</td>
+					<td>1</td>
+					<td>1</td>
+					<td>123000</td>
+					<td>Image</td>
+					<td>1</td>
+					<td><input type="button" name="btn-info" value="Info" class="btn btn-info">
+						<input type="button" name="btn-info" value="Delete" class="btn btn-danger">
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="modal fade" id="modelAdd">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+
+	      <!-- Modal Header -->
+	      <div class="modal-header">
+	        <h4 class="modal-title">ADD PRODUCT</h4>
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      </div>
+		<form>
+	      <!-- Modal body -->
+	      <div class="modal-body">
+	        	
+	        		<div class="form-group">
+						<label for="Name">Name</label>
+						<input type="text" class="form-control" placeholder="Enter name" id="name">
+					</div>
+					<div class="form-group">
+						<label for="catagory">Catagory</label>
+						 <select class="form-control" id="catagory">
+						    <option>cata1</option>
+						    <option>cata2</option>
+						    <option>cata3</option>
+						    <option>cata4</option>
+						 </select>
+
+					</div>
+					<div class="form-group">
+						<label for="price">Name</label>
+						<input type="number" class="form-control" placeholder="Enter price" id="price">
+					</div>
+	        	
+	      </div>
+
+	      <!-- Modal footer -->
+	      <div class="modal-footer">
+	      	<input type="submit" name="submit" value="Submit" class="btn btn-info">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	      </div>
+	      </form>
+	    </div>
+	  </div>
+	</div>
 
 </body>
 </html>

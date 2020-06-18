@@ -1,0 +1,47 @@
+div.contenter{
+	display: flex;
+}
+div.left{
+	width: 20%;
+	height: 100%;
+	background-color: lightblue;
+}
+div.left>ul{
+	margin: 0;
+	padding: 10px;
+}
+
+div.left>ul>li{
+	list-style-type: none;
+	padding: 10px;
+	margin: 0;
+}
+div.left>ul>li>a{
+	display: block;
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+	text-decoration: none; 
+}
+div.left>ul>li>a:hover{
+	background-color: blue;
+	color: white;
+}
+a{
+	text-decoration: none;
+}
+div.right{
+	width: 80%;
+}
+div.right>table{
+	margin: 10px;
+	width: 100%;
+
+}
+
+div.button-contro{
+	padding: 10px;
+}
+div.button-contro>button{
+	margin: 15px;
+}
