@@ -5,25 +5,189 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Home base</title>
-        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         
+        <!--bootstrap-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+      
+        <!-- font-awesome-icons -->
+	<!--<link href="css/font-awesome.css" rel="stylesheet"/>-->
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
+
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">-->
         
-        <h:outputStylesheet name="style.css" library="CSS"/>
+<!--        <script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>-->
+	<!-- //custom-theme -->
+	<!--<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />-->
+        <h:outputStylesheet name="bootstrap.css" library="CSS"/>
+	<!--<link rel="stylesheet" href="css/shop.css" type="text/css" media="screen" property="" />-->
+        <h:outputStylesheet name="shop.css" library="CSS"/>
+	<!--<link href="css/style7.css" rel="stylesheet" type="text/css" media="all" />-->
+        <h:outputStylesheet name="style7.css" library="CSS"/>
+	<!-- Owl-carousel-CSS -->
+	<!--<link rel="stylesheet" type="text/css" href="css/jquery-ui1.css">-->
+        <h:outputStylesheet name="jquery-ui1.css" library="CSS"/>
+	<!--<link href="css/style.css" rel="styl/esheet" type="text/css" media="all" />-->
+	<h:outputStylesheet name="style.css" library="CSS"/>
+        
+        <h:outputScript name="jquery-2.1.4.min.js" library="js"/>
+	<!-- //js -->
+	<!-- cart-js -->
+	<!--<script src="js/minicart.js"></script>-->
+        <h:outputScript name="minicart.js" library="js"/>
+<!--	<script>
+		shoe.render();
+
+		shoe.cart.on('shoe_checkout', function (evt) {
+			var items, len, i;
+
+			if (this.subtotal() > 0) {
+				items = this.items();
+
+				for (i = 0, len = items.length; i < len; i++) {}
+			}
+		});
+	</script>-->
+	<!-- //cart-js -->
+	<!-- /nav -->
+	<!--<script src="js/modernizr-2.6.2.min.js"></script>-->
+        <h:outputScript name="modernizr-2.6.2.min.js" library="js"/>
+	<!--<script src="js/classie.js"></script>-->
+        <h:outputScript name="classie.js" library="js"/>
+	<!--<script src="js/demo1.js"></script>-->
+        <h:outputScript name="demo1.js" library="js"/>
+	<!-- //nav -->
+	<!--search-bar-->
+	<!--<script src="js/search.js"></script>-->
+        <h:outputScript name="search.js" library="js"/>
+	<!--//search-bar-->
+	<!-- price range (top products) -->
+	<!--<script src="js/jquery-ui.js"></script>-->
+        <h:outputScript name="jquery-ui.js" library="js"/>
+	<script>//
+//		//<![CDATA[ 
+//		$(window).load(function () {
+//			$("#slider-range").slider({
+//				range: true,
+//				min: 0,
+//				max: 9000,
+//				values: [50, 6000],
+//				slide: function (event, ui) {
+//					$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+//				}
+//			});
+//			$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+//
+//		}); //]]>
+//	</script>
+	<!-- //price range (top products) -->
+
+	<!-- start-smoth-scrolling -->
+	<!--<script type="text/javascript" src="js/move-top.js"></script>-->
+        <h:outputScript name="move-top.js" library="js"/>
+	<!--<script type="text/javascript" src="js/easing.js"></script>-->
+        <h:outputScript name="easing.js" library="js"/>
+<!--	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 1000);
+			});
+		});
+	</script>-->
+	<!-- //end-smoth-scrolling -->
+	<!--<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>-->
     </h:head>
     <h:body>
         <ui:insert name="Header">
             <ui:include src="Header.xhtml"/>
         </ui:insert>
-        <ui:insert name="banner">
-            <ui:include src="banner.xhtml"/>
-        </ui:insert>
+        <section class="body-web">
+            <div class="ads-grid_shop">
+		<div class="shop_inner_inf">
+            <ui:insert name="banner">
+                <ui:include src="banner.xhtml"/>
+            </ui:insert>
+            <ui:insert name="item">
+                <ui:include src="ListItem.xhtml"/>
+            </ui:insert>
+                </div>
+            </div>
+        </section>
         <ui:insert name="Footer">
             <ui:include src="Footer.xhtml"/>
         </ui:insert>
+        <h:outputScript name="jquery-2.1.4.min.js" library="js"/>
+	<!-- //js -->
+	<!-- cart-js -->
+	<!--<script src="js/minicart.js"></script>-->
+        <h:outputScript name="minicart.js" library="js"/>
+<!--	<script>
+		shoe.render();
+
+		shoe.cart.on('shoe_checkout', function (evt) {
+			var items, len, i;
+
+			if (this.subtotal() > 0) {
+				items = this.items();
+
+				for (i = 0, len = items.length; i < len; i++) {}
+			}
+		});
+	</script>-->
+	<!-- //cart-js -->
+	<!-- /nav -->
+	<!--<script src="js/modernizr-2.6.2.min.js"></script>-->
+        <h:outputScript name="modernizr-2.6.2.min.js" library="js"/>
+	<!--<script src="js/classie.js"></script>-->
+        <h:outputScript name="classie.js" library="js"/>
+	<!--<script src="js/demo1.js"></script>-->
+        <h:outputScript name="demo1.js" library="js"/>
+	<!-- //nav -->
+	<!--search-bar-->
+	<!--<script src="js/search.js"></script>-->
+        <h:outputScript name="search.js" library="js"/>
+	<!--//search-bar-->
+	<!-- price range (top products) -->
+	<!--<script src="js/jquery-ui.js"></script>-->
+        <h:outputScript name="jquery-ui.js" library="js"/>
+	<script>//
+//		//<![CDATA[ 
+//		$(window).load(function () {
+//			$("#slider-range").slider({
+//				range: true,
+//				min: 0,
+//				max: 9000,
+//				values: [50, 6000],
+//				slide: function (event, ui) {
+//					$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+//				}
+//			});
+//			$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+//
+//		}); //]]>
+//	</script>
+	<!-- //price range (top products) -->
+
+	<!-- start-smoth-scrolling -->
+	<!--<script type="text/javascript" src="js/move-top.js"></script>-->
+        <h:outputScript name="move-top.js" library="js"/>
+	<!--<script type="text/javascript" src="js/easing.js"></script>-->
+        <h:outputScript name="easing.js" library="js"/>
     </h:body>
 </html>
 
