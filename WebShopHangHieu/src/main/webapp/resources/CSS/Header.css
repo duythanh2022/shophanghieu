@@ -1,0 +1,71 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 22, 2020, 5:43:09 AM
+    Author     : Admin
+*/
+header{
+   
+    background-image: url("#{resource['image/banner3.jpg']}");
+    background-color: rgb(255,255,255);
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: auto auto;
+    height: 200px;
+}
+.logo{
+    background-color:  whitesmoke;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px gray;
+    text-transform: uppercase ;
+    
+}
+div.links-pro>ul{
+    display: flex;
+    padding: 10px;
+    margin: 10px 10px 0 10px;
+    list-style-type: none;
+}
+div.links-pro>ul>li{
+    text-decoration: none;
+    border-left: 1px solid white;
+    padding: 5px 20px;
+    color: white;
+}
+div.links-pro>ul>li:first-child{
+    
+    border-left: none;
+    color: red
+}
+div.cart{
+    position: fixed;
+    top:100px;
+    right:  30px;
+    z-index: 10;
+}
+div.cart>button{
+    background-color: rgb(128,128,128,0.3);
+    color: white;
+    padding: 10px 15px;
+}
+div.cart-detail{
+    display: none;
+    padding: 10px;
+    border: 1px solid black;
+}
+div.dv-login{
+    display: flex;
+    position: absolute;
+    top: 100px;
+    right: 100px;
+    
+}
+div.dv-login>a{
+    padding: 10px;
+    margin: 0 3px;
+}

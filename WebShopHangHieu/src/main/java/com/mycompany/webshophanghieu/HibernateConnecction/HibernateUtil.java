@@ -11,7 +11,6 @@ import com.mycompany.webshophanghieu.Pojo.Order;
 import com.mycompany.webshophanghieu.Pojo.OrderDetail;
 import com.mycompany.webshophanghieu.Pojo.Product;
 import com.mycompany.webshophanghieu.Pojo.User;
-import com.mycompany.webshophanghieu.Pojo.UserDetail;
 import java.util.Properties;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -41,7 +40,6 @@ public class HibernateUtil {
         config.addAnnotatedClass(OrderDetail.class);
         config.addAnnotatedClass(Product.class);
         config.addAnnotatedClass(User.class);
-        config.addAnnotatedClass(UserDetail.class);
         
         ServiceRegistry regisstry=new StandardServiceRegistryBuilder()
                 .applySettings(config.getProperties()).build();
