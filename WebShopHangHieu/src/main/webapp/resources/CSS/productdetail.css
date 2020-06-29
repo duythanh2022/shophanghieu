@@ -1,0 +1,237 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 24, 2020, 12:27:05 PM
+    Author     : duyth
+*/
+/*zoom*/
+* {box-sizing: border-box;}
+
+.img-zoom-container {
+  position: relative;
+}
+/*md4*/
+.col-md-4{
+ position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.img-zoom-lens {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  /*set the size of the lens:*/
+  width: 40px;
+  height: 40px;
+}
+
+.img-zoom-result {
+  border: 1px solid #d4d4d4;
+  /*set the size of the result div:*/
+  width: 300px;
+  height: 300px;
+}
+      
+*{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+}
+body{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+.ul li{
+    list-style-type: none;
+}
+.col-md-8{
+    float: right;
+    margin-top: 15px;
+}
+.flexslider1 ul li{
+    list-style-type: none;
+}
+.col-md-4 {
+    width: 33.33333333%;
+  }
+.flexslider1{
+  margin: 0 0 10px;
+  background: #ffffff;
+  border: 4px solid #ffffff;
+  position: relative;
+  zoom: 1;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+/*  -webkit-box-shadow: '' 0 1px 4px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: '' 0 1px 4px rgba(0, 0, 0, 0.2);
+  -o-box-shadow: '' 0 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: '' 0 1px 4px rgba(0, 0, 0, 0.2);*/
+}
+.flexslider1 .slides1 {
+  zoom: 1;
+}
+.flexslider1 .slides1 img {
+  height: auto;
+}
+.single-right-left p{
+    color: #000;
+    font-size: 20px;
+    margin: .5em 0 1em;
+}
+.color-quality-right h5,.occasional h5 {
+    color: #000;
+    font-size: 16px;
+    margin: 0 0 12px;
+    letter-spacing: 1px;
+}
+.single-right-left h3 {
+    text-transform: capitalize;
+    font-size: 23px;
+    color: #fb383b;
+    margin: 0;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+.resp1 li {
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 0;
+    list-style: none;
+    cursor: pointer;
+    float: left;
+    color: #2A2B2F;
+    width: 25%;
+    text-align: center;
+    font-size: 1em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color:#fc636b;
+}
+.resp-tabs-container {
+  padding: 2em;
+  clear: left;
+  border: 1px solid #ddd;
+}
+.resp1 ul{
+    list-style-type: none;
+}
+.social-nav{
+    list-style-type: none;
+}
+.social-nav li {
+    display: inline-block;
+    margin: 0 6px;
+}
+.new_arrivals h3{
+    font-size: 1.4em;
+    color: #080808;
+    font-size: 1.4em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 3em 0 1em 0;
+}
+.stars{
+    list-style-type: none
+}
+.stars{
+    display: flex
+}
+.col-md-4{
+    float: left;
+}
+.col-md-3{
+    display: flex;
+}
+.product-men.women_two {
+    margin: 1.1em 0;
+    float: left;
+}
+.product-shoe-info {
+    padding: 15px;
+    border: 1px solid #e4e4e4;
+}
+.product-new-top {
+    background: #fb383b;
+    color: #fff;
+    right: 0;
+    position: absolute;
+    top: 0;
+    width: 80px;
+    font-size: 13px;
+    height: 29px;
+    text-align: center;
+    line-height: 2.3;
+}
+.item-info-product h4 a {
+    color: #080808;
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.slides1 thumb-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: .7;
+  cursor: pointer;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+    border: 1px solid #D1CFCF;
+}
+.flex-control-thumbs img {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: .7;
+  cursor: pointer;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+    border: 1px solid #D1CFCF;
+}
+.slides1 thumb-image img:hover {
+  opacity: 1;
+}
+.slides1 flex-active {
+  opacity: 1;
+  cursor: default;
+}
+.thumb-image1{
+    border-style: ridge;  
+}
+
+.flex-control-nav li{
+    width: 100%;
+    position: absolute; 
+    bottom: -340px;
+    text-align: center;
+    display: flex;
+}
+ol {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 14px;
+    letter-spacing: 1px;
+}
+.flex-control-nav li {
+  margin: 0 6px;
+  display: inline-block;
+  zoom: 1;
+  display: inline;
+}
+
