@@ -52,13 +52,13 @@ public class CartBean implements Serializable {
             d.put("count", Integer.parseInt( d.get("count").toString())+1);
             
         }
-        return "";
+        return "success";
     }
     public String deleteCart(String idcart){
         Map<Integer,Object>cart= (Map<Integer,Object>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("cart");
        
         cart.remove(Integer.parseInt(idcart));
-        return "";
+        return "success";
     }
     public List<Map<String,Object>> getCarts(){
         Map<Integer,Object>carts= (Map<Integer,Object>) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("cart");

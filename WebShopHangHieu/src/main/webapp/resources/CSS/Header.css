@@ -11,10 +11,12 @@ header{
    
     background-image: url("#{resource['image/banner3.jpg']}");
     background-color: rgb(255,255,255);
-    background-repeat: no-repeat;
-    background-position: center; 
-    background-size: auto auto;
     height: 200px;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .logo{
     background-color:  whitesmoke;

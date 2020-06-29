@@ -18,7 +18,7 @@ and open the template in the editor.
 }
 .shop-left>div{
     padding: 10px;
-    
+ 
 }
 .shop-left>div{
     padding: 10px;
@@ -42,7 +42,7 @@ div.search-ip input[type=text]{
 /*product*/
 div.pros{
     display: flex;
-    
+    flex-wrap: wrap;
 }
 div.pro{
     width: 33%;
@@ -75,6 +75,7 @@ div.sp-new{
     display: flex;
     border-top: 1px solid aqua;
     padding: 5%;
+    
 }
 .btn-cart{
     position: absolute;
