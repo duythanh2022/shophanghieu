@@ -74,7 +74,10 @@
                                                 <!--<button class="addcart btn btn-outline-success" id="addtocart" ><i class="fas fa-cart-plus"></i></button>-->
                                                 <h:form>
                                                     <h:commandButton styleClass="addcart btn btn-outline-success" value="add to cart">
-                                                        <f:ajax listener="#{cartBean.addItemtoCart(pro. id, pro.name, pro.price)}" />
+                                                        <f:ajax listener="#{cartBean.addItemtoCart(pro. id, pro.name, pro.price)}" 
+                                                                onevent="addSuccess(#{pro.id},'#{pro.name}',1,#{pro.price})"
+                                                                />
+                                                        
                                                     </h:commandButton>
                                                 </h:form>
                                             </div>
@@ -82,6 +85,7 @@
                                         
                                     </div>
                                 </div>
+                                
                             </c:forEach>
                             
                         </div>
@@ -91,6 +95,7 @@
                 <ui:define name="item">
                 </ui:define>
              
+    
         </ui:composition>
     </h:body>
 </html>

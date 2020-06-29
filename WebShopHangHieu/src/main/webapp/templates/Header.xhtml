@@ -73,12 +73,10 @@
                 <i class="fas fa-shopping-cart" ></i></button>
                 <div class="dropdown-menu" style="width: 500px;">
                 <h:form>
-                    <c:if test="#{facesContext.externalContext.sessionMap.get('cart')!=null}">
-                        <!--<c:if test="#{cartBean.carts==null}">-->
-                        <h:dataTable var="cart" value="#{cartBean.carts}" styleClass="table table-striped" style="font-family: Times New Roman;">
+                   
+                    <h:dataTable var="cart" value="#{cartBean.carts}" styleClass="table-cart table" style="font-family: Times New Roman;">
                             <h:column>
-                                <f:facet name="header">ID</f:facet>
-                                #{cart['proid']}
+                                <h:inputHidden value="#{cart['proid']}"  />
                             </h:column>
                             <h:column>
                                 <f:facet name="header">Name</f:facet>
@@ -86,48 +84,40 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">count</f:facet>
-                                #{cart['count']}
+                                <!--<span class="txt-count"></span>-->
+                                <h:inputText value="#{cart['count']}" style="width: 50px;background: none;border: none;" disabled="true" styleClass="txt-count" />
+                                
                             </h:column>
                             <h:column>
                                 <f:facet name="header">price</f:facet>
-                                #{cart['proprice']}
+                                
+                                <span class="txt-price">#{cart['proprice']}</span>
                             </h:column>
-                            <h:column>
+                            <h:column >
                                 <f:facet name="header">Total</f:facet>
-                                #{cart['proprice']*cart['count']}
+                                
+                                <h:inputText value="#{cart['proprice']*cart['count']}" style="width: 70px;background: none;border: none;" disabled="true" styleClass="txt-total" />
                             </h:column>
                             <h:column>
                                 <f:facet name="header">Delete</f:facet>
                                 <h:commandButton value="x" styleClass="btn btn-outline-success">
-                                    <f:ajax listener="#{cartBean.deleteCart(cart['proid'])}"></f:ajax>
+                                    <f:ajax listener="#{cartBean.deleteCart(cart['proid'])}"
+                                            onevent="deleteSuccss(#{cart['proid']})"></f:ajax>
                                 </h:commandButton>
                             </h:column>
                             
                         </h:dataTable>
                         <div style="text-align: center">
-                            <h3>Subtotal: ${cartBean.subtotal}</h3>
+                            <h3  >Subtotal: <span id="txt-pri">${cartBean.subtotal}</span></h3>
                             <h:link styleClass="btn btn-outline-warning" value="CHECK OUT" style="font-size: 22px; margin: 20px;"
-                              includeViewParams="true"
-                                       outcome="CheckOut.xhtml?faces-redirect=true"></h:link>
+                                    includeViewParams="true"
+                                    outcome="CheckOut.xhtml?faces-redirect=true"></h:link>
                         </div>
                             
-                    </c:if>
-<!--                    <c:if test="#{facesContext.externalContext.sessionMap.get('cart').value==null}">
-                        <h:outputText value="Your shopping cart is empty" style="padding: 10px;color: red;" styleClass="text-center"/>
-                    </c:if>-->
+                   
                 </h:form>
             </div>
         </div>
         
     </header>
-    <script>
-        $(document).ready(function(){
-            $("#hide").click(function(){
-              $("p").hide();
-            });
-            $("#show").click(function(){
-              $("p").show();
-            });
-        });
-     </script>
 </ui:composition>
