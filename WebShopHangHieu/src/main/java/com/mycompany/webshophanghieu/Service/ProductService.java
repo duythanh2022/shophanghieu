@@ -21,13 +21,19 @@ import org.hibernate.SessionFactory;
 public class ProductService {
     private final static SessionFactory sessionf=HibernateUtil.getSessionFactory();
     
-    public List<Product> getProducts(){
+    public List<Product> getProducts(String kw){
+//        kw=String.format("*/ %s kw);
         try(Session session=sessionf.openSession()){
             CriteriaBuilder builder=session.getCriteriaBuilder();
             CriteriaQuery<Product> query=builder.createQuery(Product.class);
             Root<Product> root=query.from(Product.class);
             query.select(root);
-            
+            if (kw  != null &&  !kw.isEmpty()) {
+                String p=String.format("%%%s%%", kw);
+                query=query.where(builder.or(builder.like(root.get("name").as(String.class), p),
+                        builder.like(root.get("color").as(String.class), p)));
+            }
+//            (root.get("name").as(String.class), kw)
             return session.createQuery(query).getResultList();
         }
     }
@@ -62,6 +68,17 @@ public class ProductService {
             }
         }
         return true;
+    }
+
+    public List<Product> getProducts() {
+        try(Session session=sessionf.openSession()){
+            CriteriaBuilder builder=session.getCriteriaBuilder();
+            CriteriaQuery<Product> query=builder.createQuery(Product.class);
+            Root<Product> root=query.from(Product.class);
+            query.select(root);
+            
+            return session.createQuery(query).getResultList();
+        }
     }
     
 }

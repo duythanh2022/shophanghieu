@@ -72,6 +72,13 @@ public class UserBean {
         }
         return "Login";
     }
+    public String checkLogin1(){
+        User user=(User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        if (user!=null) {
+            return "CheckOut";
+        }
+        return "Login?faces-redirect=true";
+    }
     public String logout(){
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("user");
         return "Login?faces-redirect=true";

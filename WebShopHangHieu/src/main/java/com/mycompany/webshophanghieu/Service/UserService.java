@@ -53,14 +53,19 @@ public class UserService {
     public User login(String email, String pass){
         pass=DigestUtils.md5Hex(pass);
         try(Session session=factory.openSession()){
-            CriteriaBuilder builder=session.getCriteriaBuilder();
-            CriteriaQuery<User> query=builder.createQuery(User.class);
-            Root<User> root=query.from(User.class);
-            query.select(root);
-            query.where(builder.and(builder.equal(root.get("email").as(String.class), email),
-                    builder.equal(root.get("pass").as(String.class), pass)));
-            return session.createQuery(query).getSingleResult();
+            try{
+                CriteriaBuilder builder=session.getCriteriaBuilder();
+                CriteriaQuery<User> query=builder.createQuery(User.class);
+                Root<User> root=query.from(User.class);
+                query.select(root);
+                query.where(builder.and(builder.equal(root.get("email").as(String.class), email),
+                        builder.equal(root.get("pass").as(String.class), pass)));
+                return session.createQuery(query).getSingleResult();
+                }catch(Exception ex){
+                    return null;
+                }
         }
+       
         
     }
 }

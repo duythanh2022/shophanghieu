@@ -15,15 +15,16 @@
         <ui:composition template="templates/base.xhtml">
            
             <ui:define name="banner">
-               
+              
                 <div class="shop-detail">
                     <div class="shop-left">
                         <div class="search-ip">
                             <h3>Search</h3>
                             <h:form>
                                 <div class="form-inline">
-                                    <h:inputText pt:placeholder="Search..." styleClass="form-control"></h:inputText>
-                                    <h:commandButton  value="Search" styleClass=" btn btn-dark"></h:commandButton>
+                                    <h:inputText pt:placeholder="Search..." styleClass="form-control" value="#{searchBean.kw}"></h:inputText>
+                                    <h:commandButton  value="Search" styleClass=" btn btn-dark" 
+                                                      action="#{searchBean.proByKw()}"></h:commandButton>
                                 </div>
                                 
                             </h:form>
@@ -48,46 +49,132 @@
                     <div class="shop-right">
                         
                         <div class="pros">
-                            <c:forEach items="${productBean.product}" var="pro">
-                                <div class="pro">
-                                    <div class="proif">
-                                        <div class="image-pro">
-                                            <h:graphicImage name="upload/#{pro.image}" library="image" style="width: 100%; height: 300px;"/>
-                                        </div>
-                                        <div class="sp-new">
-                                            <span class="badge badge-danger">New</span>
-                                        </div>
-                                        <div class="name-pro">
-                                            <h:link value="${pro.name}" styleClass="pro-link"/>
-                                        </div>
-                                        <div class="price-cart">
-                                            <div class="price">
-                                                
-                                                <c:if test="${pro.sell>0}">
-                                                    <span>${pro.price-pro.price*pro.sell/100} VND</span>
-                                                </c:if>
-                                                <c:if test="${pro.sell==0}">
-                                                    <span>${pro.price} VND</span>
-                                                </c:if>
+                            
+                            <c:if test="#{facesContext.externalContext.sessionMap.get('search')==null}">
+                                <c:forEach items="${productBean.product}" var="pro">
+                                    <div class="pro">
+                                        <div class="proif">
+                                            <div class="image-pro">
+                                                <h:graphicImage name="upload/#{pro.image}" library="image" style="width: 100%; height: 300px;"/>
                                             </div>
-                                            <div class="btn-cart">
-                                                <!--<button class="addcart btn btn-outline-success" id="addtocart" ><i class="fas fa-cart-plus"></i></button>-->
-                                                <h:form>
-                                                    <h:commandButton styleClass="addcart btn btn-outline-success" value="add to cart">
-                                                        <f:ajax listener="#{cartBean.addItemtoCart(pro. id, pro.name, pro.price)}" 
-                                                                onevent="addSuccess(#{pro.id},'#{pro.name}',1,#{pro.price})"
-                                                                />
-                                                        
-                                                    </h:commandButton>
-                                                </h:form>
+                                            <div class="sp-new">
+                                                <span class="badge badge-danger">New</span>
                                             </div>
+                                            <div class="name-pro">
+                                                <h:link value="${pro.name}" styleClass="pro-link"/>
+                                            </div>
+                                            <div class="price-cart">
+                                                <div class="price">
+
+                                                    <c:if test="${pro.sell>0}">
+                                                        <span>${pro.price-pro.price*pro.sell/100} VND</span>
+                                                    </c:if>
+                                                    <c:if test="${pro.sell==0}">
+                                                        <span>${pro.price} VND</span>
+                                                    </c:if>
+                                                </div>
+                                                <div class="btn-cart">
+                                                    <!--<button class="addcart btn btn-outline-success" id="addtocart" ><i class="fas fa-cart-plus"></i></button>-->
+                                                    <h:form>
+                                                        <h:commandButton styleClass="addcart btn btn-outline-success" value="add to cart">
+                                                            <f:ajax listener="#{cartBean.addItemtoCart(pro. id, pro.name, pro.price)}" 
+                                                                    onevent="addSuccess(#{pro.id},'#{pro.name}',1,#{pro.price})"
+                                                                    />
+
+                                                        </h:commandButton>
+                                                    </h:form>
+                                                </div>
+                                            </div>
+
                                         </div>
-                                        
+                                    </div>
+
+                                </c:forEach>
+                            </c:if>
+                            <c:if test="#{facesContext.externalContext.sessionMap.get('search')!=null}">
+                                <div class="search-kw">
+                                    <div>
+                                        <h:form>
+                                    <h4>Tìm kiếm cho: "#{facesContext.externalContext.sessionMap.get('searchkw')}"</h4>
+                                    <!--<h:link value="x" styleClass="but-x btn" />-->
+                                    <h:commandLink value="x" styleClass="but-x btn" action="${searchBean.deleteProSearch()}"/>
+                                    </h:form>
                                     </div>
                                 </div>
-                                
-                            </c:forEach>
-                            
+                                <style>
+                                    div.search-kw{
+                                        display: flex;
+                                        width: 100%;
+                                        padding: 5px;
+                                        
+                                    }
+                                    div.search-kw>div{
+                                        border: 1px solid #333;
+                                        padding: 20px;
+                                        color: red;
+                                        background-color: beige;
+                                        display: flex;
+                                        position: relative;
+                                    }
+                                    .but-x{
+                                        display: none;
+                                        
+                                    }
+                                    .search-kw>div:hover{
+                                        background-color: cadetblue;
+                                        color: white;
+                                    }
+                                    .search-kw>div:hover .but-x{
+                                        display: inline;
+                                        text-decoration: none;
+                                        position: absolute;
+                                        top: 0px;
+                                        right: 0px;
+                                        background-color: wheat
+                                       
+                                    }
+                                </style>
+                                <c:forEach items="#{facesContext.externalContext.sessionMap.get('search')}" var="pro">
+                                    
+                                    <div class="pro">
+                                        <div class="proif">
+                                            <div class="image-pro">
+                                                <h:graphicImage name="upload/#{pro.image}" library="image" style="width: 100%; height: 300px;"/>
+                                            </div>
+                                            <div class="sp-new">
+                                                <span class="badge badge-danger">New</span>
+                                            </div>
+                                            <div class="name-pro">
+                                                <h:link value="${pro.name}" styleClass="pro-link"/>
+                                            </div>
+                                            <div class="price-cart">
+                                                <div class="price">
+
+                                                    <c:if test="${pro.sell>0}">
+                                                        <span>${pro.price-pro.price*pro.sell/100} VND</span>
+                                                    </c:if>
+                                                    <c:if test="${pro.sell==0}">
+                                                        <span>${pro.price} VND</span>
+                                                    </c:if>
+                                                </div>
+                                                <div class="btn-cart">
+                                                    <!--<button class="addcart btn btn-outline-success" id="addtocart" ><i class="fas fa-cart-plus"></i></button>-->
+                                                    <h:form>
+                                                        <h:commandButton styleClass="addcart btn btn-outline-success" value="add to cart">
+                                                            <f:ajax listener="#{cartBean.addItemtoCart(pro. id, pro.name, pro.price)}" 
+                                                                    onevent="addSuccess(#{pro.id},'#{pro.name}',1,#{pro.price})"
+                                                                    />
+
+                                                        </h:commandButton>
+                                                    </h:form>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </c:forEach>
+                            </c:if>
                         </div>
                     </div>
                 </div>

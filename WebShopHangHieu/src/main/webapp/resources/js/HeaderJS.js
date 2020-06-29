@@ -66,9 +66,14 @@ function addSuccess(id,name,count,price){
    
 }
 function deleteSuccss(id){
+//    var tr=$(".table-cart tbody tr");
     var idprocart=$(".table-cart input[type='hidden']");
     for(var i=0;i<idprocart.length;i++){
         if (parseInt(idprocart[i].value)===parseInt(id)){
+//            if(tr.length>idprocart.length)
+//            {
+//                i=i+1;
+//            }
             var pri=$("#txt-pri").text();
             pri=parseInt(pri)-parseInt($(".txt-total")[i].value);
             $("#txt-pri").text(pri);

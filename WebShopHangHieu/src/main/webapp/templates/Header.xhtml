@@ -29,12 +29,14 @@
                 </ul>
                 
             </div>  
-            <h:form class="form-inline my-2 my-lg-0">
+            <h:form class="form-inline my-2 my-lg-0" enctype="multipart/form-data">
                 <!--<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-                    <h:inputText styleClass="form-control mr-sm-2">
+                <h:inputText styleClass="form-control mr-sm-2" value="#{searchBean.kw}">
                         
                     </h:inputText>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm Kiếm</button>
+                <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm Kiếm</button>-->
+                <h:commandButton styleClass="btn btn-outline-success my-2 my-sm-0" value="Tìm Kiếm" 
+                                 action="#{searchBean.proByKw()}"></h:commandButton>
             </h:form>
         </nav>
         <div class="links-pro">
@@ -60,7 +62,7 @@
                               ></h:link>
                 
                 <h:form>
-                    <h:commandLink styleClass="btn btn-outline-info" value="Logout"
+                    <h:commandLink styleClass="btn btn-outline-info" value="Dang xuat" style="padding: 10px;"
                                    action="#{userBean.logout()}"
                                    ></h:commandLink>
                 </h:form>
@@ -80,7 +82,9 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">Name</f:facet>
-                                #{cart['proName']}
+                                <c:if test="#{cart['proName']!=null}">
+                                    #{cart['proName']}
+                                </c:if>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">count</f:facet>

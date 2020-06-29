@@ -13,7 +13,9 @@
                 
             </ui:define>
             <ui:define name="item">
-                    
+                    <f:metadata>
+                        <f:viewAction action="#{userBean.checkLogin1()}"></f:viewAction>
+                    </f:metadata>
                 <div class="container" style="padding: 10px;">
                     <h:dataTable var="cart" value="#{cartBean.carts}" styleClass="table table-striped">
                         <h:column>
