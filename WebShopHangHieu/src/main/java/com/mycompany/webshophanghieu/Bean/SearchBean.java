@@ -7,6 +7,7 @@ package com.mycompany.webshophanghieu.Bean;
 
 import com.mycompany.webshophanghieu.Pojo.Brand;
 import com.mycompany.webshophanghieu.Pojo.Product;
+import com.mycompany.webshophanghieu.Service.BrandService;
 import com.mycompany.webshophanghieu.Service.ProductService;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,24 +26,44 @@ import javax.faces.context.FacesContext;
 public class SearchBean {
 
     private String kw;
+    private long begin;
+    private long end;
+    private List<Product> pros;
 //    private Brand brand;
     private final static ProductService proService=new ProductService();
+    private final static BrandService brandService=new BrandService();
     /**
      * Creates a new instance of SearchBean
      */
     public SearchBean() {
     }
     public String proByKw(){
-        List<Product> pros=new ArrayList<>();
-        pros=proService.getProducts(kw);
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("search", pros);
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("searchkw", kw);
-        return "Products.xhtml?faces-redirect=true";
+       
+        if (kw!=null) { 
+             pros=proService.getProducts(kw);
+        }
+        
+        return "true";//Products.xhtml?faces-redirect=
     }
-    public String deleteProSearch(){
-        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("search");
-         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("searchkw");
-         return "Products.xhtml?faces-redirect=true";
+    public String proByPri(){
+       
+        if (begin<end && begin>=0) { 
+             pros=proService.getProducts(begin,end);
+        }
+        
+        return "sucss";//Products.xhtml?faces-redirect=
+    }
+    
+    public String proByBrand(String id){
+         
+//        String id=FacesContext.getCurrentInstance().getExternalContext()
+//                    .getRequestParameterMap().get("braID");
+        Brand brandID=brandService.getBrandByID(Integer.parseInt(id));
+  
+        if(brandID!=null) { 
+            pros=proService.getProducts(brandID);
+        }
+        return "sucss";
     }
 
     public String getKw() {
@@ -52,5 +73,33 @@ public class SearchBean {
     public void setKw(String kw) {
         this.kw = kw;
     }
+
+    public List<Product> getPros() {
+        return pros;
+    }
+
+    public void setPros(List<Product> pros) {
+        this.pros = pros;
+    }
+
+    public long getBegin() {
+        return begin;
+    }
+
+    public void setBegin(long begin) {
+        this.begin = begin;
+    }
+
+    public long getEnd() {
+        return end;
+    }
+
+    public void setEnd(long end) {
+        this.end = end;
+    }
+
+    
+
+    
     
 }

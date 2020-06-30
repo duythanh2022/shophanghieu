@@ -41,7 +41,7 @@
                            </h:column>
                             <h:column>
                                <f:facet name="header">Category</f:facet>
-                               #{pro.category.name}
+                               #{pro.brand.name}
                            </h:column>
                             <h:column>
                                <f:facet name="header">Price</f:facet>
@@ -66,11 +66,11 @@
 
                                    <h:commandLink value="Delete" styleClass="btn btn-danger" >
 
-                                   <f:ajax listener="#{productBean.deleteProduct(pro)}"
-                                           onevent="deleteSuccess"
-                                           onerror="deleteError" />
+                                        <f:ajax listener="#{productBean.deleteProduct(pro)}"
+                                                onevent="deleteSuccess"
+                                                onerror="deleteError" />
 
-                               </h:commandLink>
+                                    </h:commandLink>
                                </h:form>
                            </h:column>
                        </h:dataTable>

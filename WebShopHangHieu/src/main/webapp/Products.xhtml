@@ -23,8 +23,8 @@
                             <h:form>
                                 <div class="form-inline">
                                     <h:inputText pt:placeholder="Search..." styleClass="form-control" value="#{searchBean.kw}"></h:inputText>
-                                    <h:commandButton  value="Search" styleClass=" btn btn-dark" 
-                                                      action="#{searchBean.proByKw()}"></h:commandButton>
+                                    <h:commandButton  value="Search" styleClass="btn btn-outline-dark" 
+                                                      actionListener="#{searchBean.proByKw()}"></h:commandButton>
                                 </div>
                                 
                             </h:form>
@@ -32,16 +32,30 @@
                         <div class="price-ip">
                             <h3>Price</h3>
                             <h:form>
-                                <h:inputText></h:inputText>
+                                <div class="form-group">
+                                    <h:inputText value="${searchBean.begin}" pt:placeholder="From" styleClass="begin form-control"/>
+                                    <h:inputText value="${searchBean.end}" pt:placeholder="To" styleClass="end form-control" />
+                                </div>
+                                <h:commandButton  value="Search" styleClass="btn btn-outline-dark" 
+                                                  actionListener="#{searchBean.proByPri()}"></h:commandButton>
                             </h:form>
                         </div>
                         <div class="brand-ip">
                             <h3>Brand</h3>
                             <h:form>
-                                <h:selectOneRadio styleClass="radio-btn">
-                                 <f:selectItems var="brand" value="${brandBean.brand}" itemLabel="#{brand.name}"
-                                                itemValue="#{brand.id}"  class="form-check-input"></f:selectItems>
-                            </h:selectOneRadio> 
+                                <c:forEach var="bra" items="#{brandBean.brand}">
+<!--                                    <h:link value="" 
+                                           includeViewParams="true"
+                                           outcome="Products?faces-redirect=true">
+                                        <f:param name="brandId" value="${brand.id}"/>
+                                   </h:link>-->
+                                    
+                                        <h:commandButton value="#{bra.name}" actionListener="#{searchBean.proByBrand(bra.id)}"
+                                                         styleClass="btn btn-link text-decoration-none">
+                                            
+                                        </h:commandButton>
+                                    
+                                </c:forEach>
                             </h:form>
                         </div>
                     </div>
@@ -49,8 +63,10 @@
                     <div class="shop-right">
                         
                         <div class="pros">
-                            
-                            <c:if test="#{facesContext.externalContext.sessionMap.get('search')==null}">
+                            <div>
+                                <h:messages rendered="true" showDetail="true"></h:messages>
+                            </div>
+                            <c:if test="#{searchBean.pros==null}">
                                 <c:forEach items="${productBean.product}" var="pro">
                                     <div class="pro">
                                         <div class="proif">
@@ -91,13 +107,13 @@
 
                                 </c:forEach>
                             </c:if>
-                            <c:if test="#{facesContext.externalContext.sessionMap.get('search')!=null}">
-                                <div class="search-kw">
+                            <c:if test="#{searchBean.pros!=null}">
+<!--                                <div class="search-kw">
                                     <div>
                                         <h:form>
-                                    <h4>Tìm kiếm cho: "#{facesContext.externalContext.sessionMap.get('searchkw')}"</h4>
-                                    <!--<h:link value="x" styleClass="but-x btn" />-->
-                                    <h:commandLink value="x" styleClass="but-x btn" action="${searchBean.deleteProSearch()}"/>
+                                    <h4>Tìm kiếm cho: "</h4>
+                                    <h:link value="x" styleClass="but-x btn" />
+                                    <h:commandLink value="x" styleClass="but-x btn" action=""/>
                                     </h:form>
                                     </div>
                                 </div>
@@ -133,8 +149,8 @@
                                         background-color: wheat
                                        
                                     }
-                                </style>
-                                <c:forEach items="#{facesContext.externalContext.sessionMap.get('search')}" var="pro">
+                                </style>-->
+                                <c:forEach items="#{searchBean.pros}" var="pro">
                                     
                                     <div class="pro">
                                         <div class="proif">

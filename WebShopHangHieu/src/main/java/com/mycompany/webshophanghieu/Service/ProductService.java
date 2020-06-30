@@ -6,8 +6,10 @@
 package com.mycompany.webshophanghieu.Service;
 
 import com.mycompany.webshophanghieu.HibernateConnecction.HibernateUtil;
+import com.mycompany.webshophanghieu.Pojo.Brand;
 import com.mycompany.webshophanghieu.Pojo.Product;
 import java.util.List;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -35,6 +37,30 @@ public class ProductService {
             }
 //            (root.get("name").as(String.class), kw)
             return session.createQuery(query).getResultList();
+        }
+    }
+    public List<Product> getProducts(long begin,long end){
+//        kw=String.format("*/ %s kw);
+        try(Session session=sessionf.openSession()){
+            CriteriaBuilder builder=session.getCriteriaBuilder();
+            CriteriaQuery<Product> query=builder.createQuery(Product.class);
+            Root<Product> root=query.from(Product.class);
+            query.select(root);
+            
+              
+            query=query.where(builder.and(builder.lessThan(root.get("price").as(Long.class), end),
+                    builder.greaterThan(root.get("price").as(Long.class), begin)));
+           
+//            (root.get("name").as(String.class), kw)
+            return session.createQuery(query).getResultList();
+        }
+    }
+    public List<Product> getProducts(Brand brandid){
+//        kw=String.format("*/ %s kw);
+        try(Session session=sessionf.openSession()){
+            String hql="FROM Product P Where P.brand.id="+brandid.getId();
+            Query query=session.createQuery(hql);
+            return query.getResultList();
         }
     }
     public boolean addOrSaveCate(Product pro){

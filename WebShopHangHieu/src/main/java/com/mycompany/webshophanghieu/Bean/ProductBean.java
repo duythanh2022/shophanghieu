@@ -5,7 +5,7 @@
  */
 package com.mycompany.webshophanghieu.Bean;
 
-import com.mycompany.webshophanghieu.Pojo.Category;
+import com.mycompany.webshophanghieu.Pojo.Brand;
 import com.mycompany.webshophanghieu.Pojo.Product;
 import com.mycompany.webshophanghieu.Service.ProductService;
 import java.io.FileOutputStream;
@@ -34,7 +34,7 @@ public class ProductBean {
     private int id;
     private String name;
     private String color;
-    private Category category;
+    private Brand brand;
     private long price;
     private int amount;
     private Part image;
@@ -52,7 +52,7 @@ public class ProductBean {
                 this.id=pro.getId();
                 this.name=pro.getName();
                 this.color=pro.getColor();
-                this.category=pro.getCategory();
+                this.brand=pro.getBrand();
                 this.price=pro.getPrice();
                 this.amount=pro.getAmount();
                 this.imgName=pro.getImage();
@@ -76,7 +76,7 @@ public class ProductBean {
         }
             pro.setName(this.name);
             pro.setColor(this.color);
-            pro.setCategory(this.category);
+            pro.setBrand(this.brand);
             pro.setPrice(this.price);
             pro.setAmount(this.amount);
             try {
@@ -159,16 +159,17 @@ public class ProductBean {
         this.image = image;
     }
 
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
     
 
     
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 
   
 

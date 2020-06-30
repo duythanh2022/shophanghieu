@@ -31,8 +31,8 @@ public class Product implements Serializable{
     
     private String color;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "category_id")
-    private Category category;
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
     private Long price;
     private int status;
     private int sell;
@@ -71,14 +71,12 @@ public class Product implements Serializable{
         this.color = color;
     }
 
-    
-
-    public Category getCategory() {
-        return category;
+    public Brand getBrand() {
+        return brand;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
     public Long getPrice() {

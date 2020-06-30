@@ -31,8 +31,16 @@ and open the template in the editor.
     display: block;
     padding: 10px;
 }
-div.search-ip input[type=text]{
-    width: 80%;
+div.search-ip input[type="text"]{
+    width: 70%;
+}
+div.search-ip input[type="submit"]{
+    margin: 1px auto; 
+    width: 30%;
+}
+div.price-ip input[type="submit"]{
+    margin: 1px auto; 
+    width: 100%;
 }
 .shop-right{
     width: 70%;

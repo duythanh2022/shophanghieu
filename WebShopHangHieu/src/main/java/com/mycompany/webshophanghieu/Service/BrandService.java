@@ -49,8 +49,8 @@ public class BrandService {
     
     public Brand getBrandByID(int brandId){
         try(Session session=sessionf.openSession()){
-            Brand br=session.get(Brand.class, brandId);
-            return br;
+            return session.get(Brand.class, brandId);
+            
         }
     }
 }

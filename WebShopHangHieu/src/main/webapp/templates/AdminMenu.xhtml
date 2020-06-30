@@ -6,22 +6,28 @@
         <ul>
                 <li>
                         <a href="">Home</a>
+                        
                 </li>
                 <li>
-                        <a href="">Product</a>
+                    <h:link  value="Product" 
+                              includeViewParams="true"
+                                       outcome="AdminProduct.xhtml?faces-redirect=true"></h:link>
+                </li>
+                
+                <li>
+                        <h:link  value="Brand" 
+                              includeViewParams="true"
+                                       outcome="AdminBrand.xhtml?faces-redirect=true"></h:link>
                 </li>
                 <li>
-                  
-                        <h:link value="Category"></h:link>
+                        <h:link  value="User"
+                              includeViewParams="true"
+                                       outcome="AdminUser.xhtml?faces-redirect=true"></h:link>
                 </li>
                 <li>
-                        <a href="">Brand</a>
-                </li>
-                <li>
-                        <a href="">User</a>
-                </li>
-                <li>
-                        <a href="">Order</a>
+                        <h:link  value="Order" 
+                                       ></h:link>
+                    <!--AdminOrder.xhtml?faces-redirect=true-->
                 </li>
                 <li>
                         <a href="">Thống kê</a>
