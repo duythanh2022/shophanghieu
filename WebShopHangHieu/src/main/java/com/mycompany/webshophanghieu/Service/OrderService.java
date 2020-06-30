@@ -7,6 +7,7 @@ package com.mycompany.webshophanghieu.Service;
 
 import com.mycompany.webshophanghieu.HibernateConnecction.HibernateUtil;
 import com.mycompany.webshophanghieu.Pojo.Order;
+import com.mycompany.webshophanghieu.Pojo.OrderDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -15,13 +16,29 @@ import org.hibernate.SessionFactory;
  * @author Admin
  */
 public class OrderService {
-    private final static SessionFactory factory=HibernateUtil.getSessionFactory();
     
-    public boolean addOrSaveCate(Order cate){
-        try (Session session=factory.openSession()){
+    private final SessionFactory seFactory=HibernateUtil.getSessionFactory();
+    
+    
+    public boolean addOrSaveOrder(Order o){
+        try (Session session=seFactory.openSession()){
             try{
                 session.getTransaction().begin();
-                session.saveOrUpdate(cate);
+                session.saveOrUpdate(o);
+                session.getTransaction().commit();
+            }catch(Exception ex){
+                System.err.println(ex);
+                session.getTransaction().rollback();
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean addOrSaveDetail(OrderDetail orderD){
+        try (Session session=seFactory.openSession()){
+            try{
+                session.getTransaction().begin();
+                session.saveOrUpdate(orderD);
                 session.getTransaction().commit();
             }catch(Exception ex){
                 session.getTransaction().rollback();

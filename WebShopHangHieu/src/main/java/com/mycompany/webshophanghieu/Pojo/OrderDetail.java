@@ -35,4 +35,53 @@ public class OrderDetail implements Serializable{
     private long unitPrice;
     private int amountDetail;
     private long totalDetail;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public long getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(long unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public int getAmountDetail() {
+        return amountDetail;
+    }
+
+    public void setAmountDetail(int amountDetail) {
+        this.amountDetail = amountDetail;
+    }
+
+    public long getTotalDetail() {
+        return totalDetail;
+    }
+
+    public void setTotalDetail(long totalDetail) {
+        this.totalDetail = totalDetail;
+    }
+    
 }

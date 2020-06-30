@@ -6,7 +6,9 @@
 package com.mycompany.webshophanghieu.Pojo;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,16 +21,17 @@ import javax.persistence.Table;
  * @author Admin
  */
 @Entity
-@Table(name="order")
+@Table(name = "order")
 public class Order implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
     
-    @ManyToOne
-    @JoinColumn(name="userid")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="user_id")
     private User user;
-    private int date;
+    private long date;
     private long total;
 
     public int getId() {
@@ -47,11 +50,11 @@ public class Order implements Serializable{
         this.user = user;
     }
 
-    public int getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(long date) {
         this.date = date;
     }
 
@@ -62,5 +65,6 @@ public class Order implements Serializable{
     public void setTotal(long total) {
         this.total = total;
     }
+
     
 }

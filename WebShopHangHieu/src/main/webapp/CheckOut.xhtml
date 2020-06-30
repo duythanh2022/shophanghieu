@@ -40,11 +40,19 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">Delete</f:facet>
+                            <h:form>
                             <h:commandButton value="x" styleClass="btn btn-outline-success">
                                 <f:ajax listener="#{cartBean.deleteCart(cart['proid'])}"></f:ajax>
                             </h:commandButton>
+                                </h:form>
                         </h:column>
                     </h:dataTable>
+                    <div>
+                    <h:form>
+                        <h:commandButton value="Order"
+                                         action="#{orderBean.addOrder()}"/>
+                    </h:form>
+                    </div>
                 </div>
             </ui:define>
         </ui:composition>
