@@ -26,9 +26,7 @@ public class BrandBean {
     
 
     private final static BrandService brandService=new BrandService();
-    /**
-     * Creates a new instance of BrandBean
-     */
+    
     public BrandBean() {
     }
     public List<Brand> getBrand(){
@@ -44,6 +42,12 @@ public class BrandBean {
         return "AdminBrand";
     }
 
+    public String deleteBrand(Brand br) throws Exception{
+        if (brandService.deleteBrand(br)) {
+            return "success";
+        }
+        throw new Exception("Delete False");
+    }
     public String getNameBr() {
         return nameBr;
     }

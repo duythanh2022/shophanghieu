@@ -6,58 +6,54 @@
                         xmlns:f="http://xmlns.jcp.org/jsf/core"
                         xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-        <title>Product</title>
+        <title>Order</title>
     </h:head>
     <h:body>
          <ui:composition template="templates/AdminBase.xhtml"
                          >
                                <ui:define name="AdminCategory">
                  <div class="right-ad">
-                    <div class="button-contro">
-            <!--                <h:link value="Add Category" styleClass="btn btn-outline-success"
-                                data-toggle="modal" data-target="#myModal"></h:link>-->
+<!--                    <div class="button-contro">
+                            <h:link value="Add Category" styleClass="btn btn-outline-success"
+                                data-toggle="modal" data-target="#myModal"></h:link>
                         <h:link value="Add" styleClass="btn btn-info"
                                            includeViewParams="true"
                                        outcome="AdminProductDetail?faces-redirect=true">
                                       
                         </h:link>
-                    </div>
+                    </div>-->
+<h3 class="text-center" style="padding: 10px">Order</h3>
                     <div>
                         <h:form>
                             <h:inputText styleClass="myInput form-control" pt:placeholder="search"/>
                         </h:form>
-                        <h:dataTable var="pro" 
-                                     value="#{productBean.product}" 
-                                     styleClass="table table-striped myTable" 
-                                    
-                                     >
-                           <h:column >
+                        <h:dataTable var="ord" 
+                                     value="#{orderBean.orders}" 
+                                     styleClass="table table-striped myTable" >
+                           <h:column>
                                <f:facet name="header">ID</f:facet>
-                               #{pro.id}
+                               #{ord.id}
                            </h:column>
                            <h:column>
-                               <f:facet name="header">User</f:facet>
-                               #{pro.name}
+                               <f:facet name="header">Ten Khach hang</f:facet>
+                               #{ord.userid.fullname}
                            </h:column>
                            <h:column>
-                               <f:facet name="header">Tong don hang</f:facet>
-                               #{pro.color}
+                               <f:facet name="header">Ngay</f:facet>
+                               #{orderBean.getdate(ord.dateod)}
                            </h:column>
-                            
                             <h:column>
-                               <f:facet name="header">ngay</f:facet>
-                               #{pro.price}
+                               <f:facet name="header">Tong gia</f:facet>
+                               #{ord.total}
                            </h:column>
                             
                            <h:column>
                                <f:facet name="header">Action</f:facet>
-                               <h:form styleClass="form-inline">
-                                   <h:link value="View" styleClass="btn btn-info"
-                                           includeViewParams="true"
-                                       outcome="AdminProductDetail?faces-redirect=true">
-                                       <f:param name="product_id" value="${pro.id}"/>
-                                   </h:link>
-                               </h:form>
+                                <h:link value="View" styleClass="btn btn-info"
+                                        includeViewParams="true"
+                                    outcome="AdminOrderDetail?faces-redirect=true">
+                                    <f:param name="order_id" value="${ord.id}"/>
+                                </h:link>
                            </h:column>
                        </h:dataTable>
                         

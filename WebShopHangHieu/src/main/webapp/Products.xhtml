@@ -70,6 +70,7 @@
                                 <c:forEach items="${productBean.product}" var="pro">
                                     <div class="pro">
                                         <div class="proif">
+
                                             <div class="image-pro">
                                                 <h:graphicImage name="upload/#{pro.image}" library="image" style="width: 100%; height: 300px;"/>
                                             </div>
@@ -77,8 +78,13 @@
                                                 <span class="badge badge-danger">New</span>
                                             </div>
                                             <div class="name-pro">
-                                                <h:link value="${pro.name}" styleClass="pro-link"/>
+                                                <h:link value="${pro.name}" styleClass="pro-link"
+                                                        includeViewParams="true"
+                                                    outcome="productdetail?faces-redirect=true">
+                                                    <f:param name="product_id" value="${pro.id}"/>
+                                                </h:link>
                                             </div>
+
                                             <div class="price-cart">
                                                 <div class="price">
 

@@ -36,7 +36,7 @@ public class Brand implements Serializable{
     @Override
     public boolean equals(Object obj) {
         Brand brand=(Brand) obj; 
-        System.out.println(brand.toString());
+        
         return this.id==brand.getId();
     }
 

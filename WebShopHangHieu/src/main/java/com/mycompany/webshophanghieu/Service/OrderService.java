@@ -6,8 +6,13 @@
 package com.mycompany.webshophanghieu.Service;
 
 import com.mycompany.webshophanghieu.HibernateConnecction.HibernateUtil;
-import com.mycompany.webshophanghieu.Pojo.Order;
+import com.mycompany.webshophanghieu.Pojo.Orders;
 import com.mycompany.webshophanghieu.Pojo.OrderDetail;
+import java.util.List;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -18,16 +23,36 @@ import org.hibernate.SessionFactory;
 public class OrderService {
     
     private final SessionFactory seFactory=HibernateUtil.getSessionFactory();
-    
-    
-    public boolean addOrSaveOrder(Order o){
+
+    public OrderService() {
+        
+    }
+    public List<Orders> getOrders(){
+       
+        try(Session session=seFactory.openSession()){
+            
+           CriteriaBuilder builder=session.getCriteriaBuilder();
+           CriteriaQuery<Orders> query=builder.createQuery(Orders.class);
+           Root<Orders> root=query.from(Orders.class);
+           query.select(root);
+            return session.createQuery(query).getResultList();
+        }
+    }
+    public List<OrderDetail> getOrderDetailByOreder(Orders orders){
+//        kw=String.format("*/ %s kw);
+        try(Session session=seFactory.openSession()){
+            String hql="FROM order_detail od Where od.order.id="+orders.getId();
+            Query query=session.createQuery(hql);
+            return query.getResultList();
+        }
+    }
+    public boolean addOrSaveOrder(Orders or){
         try (Session session=seFactory.openSession()){
             try{
                 session.getTransaction().begin();
-                session.saveOrUpdate(o);
+                session.saveOrUpdate(or);
                 session.getTransaction().commit();
             }catch(Exception ex){
-                System.err.println(ex);
                 session.getTransaction().rollback();
                 return false;
             }
@@ -46,5 +71,11 @@ public class OrderService {
             }
         }
         return true;
+    }
+    public Orders getOrderByID(int orId){
+        try(Session session=seFactory.openSession()){
+            return session.get(Orders.class, orId);
+            
+        }
     }
 }

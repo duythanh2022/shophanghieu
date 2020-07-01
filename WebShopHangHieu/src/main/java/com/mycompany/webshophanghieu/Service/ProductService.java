@@ -63,7 +63,7 @@ public class ProductService {
             return query.getResultList();
         }
     }
-    public boolean addOrSaveCate(Product pro){
+    public boolean addOrSavePro(Product pro){
         try (Session session=sessionf.openSession()){
             try{
                 session.getTransaction().begin();

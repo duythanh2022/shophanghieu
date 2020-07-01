@@ -86,7 +86,7 @@ public class ProductBean {
                 }
 
 
-                if (proService.addOrSaveCate(pro)==true) {
+                if (proService.addOrSavePro(pro)==true) {
                     return "AdminProduct?faces-redirect=true";
                 }
             } catch (IOException ex) {

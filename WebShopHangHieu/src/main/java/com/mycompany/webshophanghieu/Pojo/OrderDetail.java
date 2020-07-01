@@ -6,6 +6,7 @@
 package com.mycompany.webshophanghieu.Pojo;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,17 +24,21 @@ import javax.persistence.Table;
 public class OrderDetail implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
     
     @ManyToOne
     @JoinColumn(name="order_id")
-    private Order order;
+    private Orders order;
     
     @ManyToOne
     @JoinColumn(name="product_id")
     private Product product;
+    @Column(name = "unit_price")
     private long unitPrice;
+    @Column(name = "amount_detail")
     private int amountDetail;
+    @Column(name="total_detail")
     private long totalDetail;
 
     public int getId() {
@@ -44,11 +49,11 @@ public class OrderDetail implements Serializable{
         this.id = id;
     }
 
-    public Order getOrder() {
+    public Orders getOrder() {
         return order;
     }
 
-    public void setOrder(Order order) {
+    public void setOrder(Orders order) {
         this.order = order;
     }
 

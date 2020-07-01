@@ -1,0 +1,23 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 1, 2020, 2:09:53 PM
+    Author     : Admin
+*/
+div.pro-out{
+    width: 40%;
+    padding: 20px 5px;
+}
+div.pro-out>div>ul>li{
+    display: flex;
+}
+div.pro-out>div>ul>li:last-child{
+    border-top: 2px solid threedlightshadow;
+}
+div.u-out{
+    width: 60%;
+    padding: 20px;
+}

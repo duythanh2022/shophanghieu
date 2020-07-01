@@ -16,7 +16,7 @@
                 <div class="container" style="padding: 10px;">
                     <h1 class="text-center">Dang ky</h1>
                     <h:messages/>
-                    <h:form>
+                    <h:form id="loginForm">
                     <div class="form-group">
                         <h:outputLabel value="Email"/>
                         <h:inputText id="txtemail" styleClass="form-control" value="#{userBean.email}"></h:inputText>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="form-group">
                         <h:outputLabel value="Pass"/>
-                        <h:inputSecret id="txtPass" styleClass="form-control" value="#{userBean.pass}"/>
+                        <h:inputSecret id="txtPass" styleClass="form-control" value="#{userBean.pass}" />
                     </div>
                     <div class="form-group">
                         <h:outputLabel value="Pass Confirm"/>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="form-group">
                         <h:commandButton value="Dang ky"  styleClass="btn btn-outline-success"
-                                         action="${userBean.register()}"></h:commandButton>
+                                         action="${userBean.register()}" onclick="validatePassword"></h:commandButton>
                     </div>
                     </h:form>
                 </div>

@@ -4,24 +4,24 @@
  * and open the template in the editor.
  */
 
-
 $(document).ready(function(){
     $('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:10,
-    nav:true,
-   
-    responsive:{
-        0:{
-            items:1
-        },
-        200:{
-            items:2
-        },
-        700:{
-            items:3
+        loop:true,
+        margin:10,
+        nav:true,
+        autoplay:true,
+        autoplayTimeout:2000,
+
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:5
+            }
         }
-    }
-    
-});
+    });
 });

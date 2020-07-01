@@ -5,7 +5,7 @@
  */
 package com.mycompany.webshophanghieu.Bean;
 
-import com.mycompany.webshophanghieu.Pojo.Order;
+import com.mycompany.webshophanghieu.Pojo.Orders;
 import com.mycompany.webshophanghieu.Pojo.OrderDetail;
 import com.mycompany.webshophanghieu.Pojo.Product;
 import com.mycompany.webshophanghieu.Pojo.User;
@@ -88,6 +88,12 @@ public class CartBean implements Serializable {
         
         return total;
     }
-    
+    public String checkLogin1(){
+        User user=(User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
+        if (user!=null&&getSubtotal()>0) {
+            return "CheckOut";
+        }
+        return "Login?faces-redirect=true";
+    }
    
 }

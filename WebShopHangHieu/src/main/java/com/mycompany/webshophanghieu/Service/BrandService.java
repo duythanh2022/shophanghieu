@@ -53,4 +53,17 @@ public class BrandService {
             
         }
     }
+    public boolean deleteBrand(Brand br){
+        try(Session session=sessionf.openSession()){
+           try{
+                session.getTransaction().begin();
+                session.delete(br);
+                session.getTransaction().commit();
+            }catch(Exception ex){
+                session.getTransaction().rollback();
+                return false;
+            }
+        }
+        return true;
+    }
 }

@@ -34,28 +34,21 @@
                            </h:column>
                            <h:column>
                                <f:facet name="header">name</f:facet>
-                               #{user.userDetail.fullname}
+                               #{user.fullname}
                            </h:column>
                            <h:column>
                                <f:facet name="header">Phone</f:facet>
-                               #{user.userDetail.phone}
+                               #{user.phone}
                            </h:column>
                             <h:column>
                                <f:facet name="header">Address</f:facet>
-                               #{user.userDetail.address}
+                               #{user.address}
                            </h:column>
                             <h:column>
                                <f:facet name="header">Roll</f:facet>
                               
-                               <c:if test="#{user.roll==0}">
-                                   <f:facet name="header">ADmin</f:facet>
-                               </c:if>
-                               <c:if test=" #{user.roll}==1">
-                                   da kich hoat
-                               </c:if>
-                               <c:if test=" #{user.roll}==2">
-                                   chua kich hoat
-                               </c:if>
+                                #{user.roll}
+                               
                            </h:column>
                             
                            <h:column>

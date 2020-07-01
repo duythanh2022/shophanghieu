@@ -14,7 +14,7 @@
             </ui:define>
             <ui:define name="item">
                     <f:metadata>
-                        <f:viewAction action="#{userBean.checkLogin1()}"></f:viewAction>
+                        <f:viewAction action="#{cartBean.checkLogin1()}"></f:viewAction>
                     </f:metadata>
                 <div class="container" style="padding: 10px;">
                     <h:dataTable var="cart" value="#{cartBean.carts}" styleClass="table table-striped">
@@ -47,11 +47,56 @@
                                 </h:form>
                         </h:column>
                     </h:dataTable>
-                    <div>
-                    <h:form>
-                        <h:commandButton value="Order"
-                                         action="#{orderBean.addOrder()}"/>
-                    </h:form>
+                    <div class="checkout-info d-flex">
+                        <div class="pro-out">
+                            <div>
+                                <ul>
+                                    <li>
+                                        <h5 class="mr-auto">Tong tien hang</h5>
+                                        <h:outputText value="#{cartBean.subtotal} VND" styleClass="text"/>
+                                    </li>
+                                    <li>
+                                        <h5 class="mr-auto">VAT</h5>
+                                        <h:outputText value="#{cartBean.subtotal*10/100} VND" styleClass="text"/>
+                                    </li>
+                                    <li>
+                                        <h5 class="mr-auto">Giam gia</h5>
+                                        <h:outputText value="0 VND" styleClass="text"/>
+                                    </li>
+                                    <li>
+                                        <h5 class="mr-auto">Tong Cong</h5>
+                                        <h:outputText value="#{cartBean.subtotal*10/100+cartBean.subtotal}" styleClass="text"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="u-out">
+                            <div>
+                                <h:form>
+                                    <div class="form-group">
+                                        <h:outputText value="Email" />
+                                        <h:inputText value="#{facesContext.externalContext.sessionMap.get('user').email}" styleClass="form-control"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <h:outputText value="Name" />
+                                        <h:inputText value="#{facesContext.externalContext.sessionMap.get('user').fullname}" styleClass="form-control"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <h:outputText value="Phone" />
+                                        <h:inputText value="#{facesContext.externalContext.sessionMap.get('user').phone}" styleClass="form-control"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <h:outputText value="Address" />
+                                        <h:inputText value="#{facesContext.externalContext.sessionMap.get('user').address}" styleClass="form-control"/>
+                                    </div>
+                                    <div>
+                                        <h:commandButton value="Dat Hang" 
+                                                         styleClass="btn btn-outline-danger"
+                                                         action="#{orderBean.addOrder()}"></h:commandButton>
+                                    </div>
+                                </h:form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </ui:define>

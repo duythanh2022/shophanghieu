@@ -36,11 +36,11 @@
                         <h:column>
                             <f:facet name="header">Action</f:facet>
                             <h:form styleClass="form-inline">
-                                <h:link value="Update" styleClass="btn btn-info"></h:link>
+                                <!--<h:link value="Update" styleClass="btn btn-info"></h:link>-->
 
-                            <h:commandLink value="Delete" styleClass="btn btn-danger">
+                                <h:commandLink value="Delete" styleClass="btn btn-danger" actionListener="${brandBean.deleteBrand(brand)}">
 
-                                    <f:ajax/>
+                                   
 
                             </h:commandLink>
                             </h:form>

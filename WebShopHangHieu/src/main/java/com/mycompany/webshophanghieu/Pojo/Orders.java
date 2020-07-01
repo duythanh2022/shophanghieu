@@ -21,19 +21,18 @@ import javax.persistence.Table;
  * @author Admin
  */
 @Entity
-@Table(name = "order")
-public class Order implements Serializable{
+@Table(name = "orders")
+public class Orders implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="user_id")
-    private User user;
-    private long date;
-    private long total;
-
+    private User userid;
+    private Long dateod;
+    private Long total;
+    
     public int getId() {
         return id;
     }
@@ -42,29 +41,27 @@ public class Order implements Serializable{
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public User getUserid() {
+        return userid;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserid(User userid) {
+        this.userid = userid;
     }
 
-    public long getDate() {
-        return date;
+    public Long getDateod() {
+        return dateod;
     }
 
-    public void setDate(long date) {
-        this.date = date;
+    public void setDateod(Long dateod) {
+        this.dateod = dateod;
     }
 
-    public long getTotal() {
+    public Long getTotal() {
         return total;
     }
 
-    public void setTotal(long total) {
-        this.total = total;
+    public void setTotal(Long total) {
+        this.total= total;
     }
-
-    
 }

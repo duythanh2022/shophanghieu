@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     
    <h:head> 
         <title>Order</title>
@@ -24,36 +25,23 @@
                                             <ul class="slides1">
 							<li data-thumb="image/s7.jpg" style="width: 365px; float: left; display: block;" class="flex-active-slide">
                                                             <div class="thumb-image1"  aria-hidden="true" style="width: 365px; float: left; display: block;">
-<!--                                                                <h:graphicImage id="myimage" library="image" name="s7.jpg" width="300" height="240" pt:data-imagezoom="true"/>-->
-<!--                                                                <div id="myresult" class="img-zoom-result"></div>-->
-                                                                 <h:graphicImage id="myimage" library="image" name="s7.jpg" width="300" height="240" pt:data-imagezoom="true" class="img-responsive" pt:draggable="false"/>
-                                                                <!--<img src="images/d2.jpg" data-imagezoom="true" class="img-responsive">-->
+                                                               
+                                                                <h:graphicImage id="myimage" library="image" name="upload/#{productBean.imgName}" width="300" height="240" pt:data-imagezoom="true" styleClass="img-responsive" pt:draggable="false"/>
+                                                                 <!--<h:graphicImage name="upload/#{pro.image}" library="image" style="width: 100%; height: 300px;"/>-->
+                                                                
                                                                     
                                                             </div>
 							</li>
-<!--                                                <ol class="flex-control-nav flex-control-thumbs">
-							<li>
-								<div >
-                                                                     <h:graphicImage library="image" name="s7.jpg" class="flex-active" pt:draggable="false"/>
-                                                                    <img src="images/d1.jpg" data-imagezoom="true" class="img-responsive">
-                                                                </div>
-							</li>
-							<li >
-								<div>
-                                                                     <h:graphicImage library="image" name="s7.jpg" class="flex-active" pt:draggable="false"/>
-                                                                    <img src="images/d3.jpg" data-imagezoom="true" class="img-responsive"> 
-                                                                </div>
-							</li>
-                                                </ol>-->
+                                             
 						</ul>
 						<div class="clearfix"></div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-8 single-right-left simpleCart_shelfItem">
-				<h3>Shoe Rock Vision(SRV) Sneakers (Blue)</h3>
-				<p><span class="item_price">$650</span>
-					<del>$1,199</del>
+                            <h3>#{productBean.name}</h3>
+                            <p><span class="item_price">#{productBean.price} VND</span>
+					
 				</p>
 				<div class="rating1">
 					<ul class="stars">
@@ -66,9 +54,9 @@
 				</div>
 				<div class="description">
                                     <h5>Check delivery, payment options and charges at your location</h5>
-                                    <h:form>
+                                    <h:form styleClass="form-group">
 			 
-                                            <h:inputText value="Enter pincode" 
+                                        <h:inputText value="Enter pincode" styleClass="form-control" 
 						    ></h:inputText>
 						<h:commandButton  value="Check" styleClass=" btn btn-dark"></h:commandButton>
                                                  
@@ -77,7 +65,7 @@
                                         
                           
 				</div>
-				<div class="color-quality">
+<!--				<div class="color-quality">
 					<div class="color-quality-right">
 						<h5>Quality :</h5>
 						<select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
@@ -87,7 +75,7 @@
 								<option value="null">10 Qty</option>								
 							</select>
 					</div>
-				</div>
+				</div>-->
 <!--				<div class="occasional">
 					<h5>Types :</h5>
                                         <h:form>
@@ -122,8 +110,11 @@
 					<div class="shoe single-item single_page_b">						
                                                      <h:form>
                                                     <h:commandButton styleClass="addcart btn btn-outline-success" value="add to cart">
-                                                        <f:ajax listener="#{cartBean.addItemtoCart(pro. id, pro.name, pro.price)}" />
-                                                    </h:commandButton>
+                                                        <f:ajax listener="#{cartBean.addItemtoCart(productBean.id, productBean.name, productBean.price)}" 
+                                                                    onevent="addSuccess(#{productBean.id},'#{productBean.name}',1,#{productBean.price})"
+                                                                    />
+
+                                                        </h:commandButton>
                                                 </h:form>
 							
 						
@@ -135,26 +126,22 @@
 					<li class="share">Share On : </li>
 					<li>
 						<a href="#" class="facebook">
-							<div class="front"><i class="fa fa-facebook" aria-hidden="true"></i></div>
-							<div class="back"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+							<div class="front"><i class="fab fa-facebook-f"></i></div>
 						</a>
 					</li>
 					<li>
 						<a href="#" class="twitter">
-							<div class="front"><i class="fa fa-twitter" aria-hidden="true"></i></div>
-							<div class="back"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+							<div class="front"><i class="fab fa-twitter"></i></div>
 						</a>
 					</li>
 					<li>
 						<a href="#" class="instagram">
-							<div class="front"><i class="fa fa-instagram" aria-hidden="true"></i></div>
-							<div class="back"><i class="fa fa-instagram" aria-hidden="true"></i></div>
+							<div class="front"><i class="fab fa-instagram"></i></div>
 						</a>
 					</li>
 					<li>
 						<a href="#" class="pinterest">
-							<div class="front"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
-							<div class="back"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+							<div class="front"><i class="fab fa-linkedin-in"></i></div>
 						</a>
 					</li>
 				</ul>
@@ -192,13 +179,10 @@
 								<div class="bootstrap-tab-text-grids">
 									<div class="bootstrap-tab-text-grid">
 										<div class="bootstrap-tab-text-grid-left">
-                                                                                    <h:graphicImage library="image" name="s7.jpg"/>
+                                                                                    <h:graphicImage library="image" name="upload/#{productBean.imgName}"/>
 										</div>
 										<div class="bootstrap-tab-text-grid-right">
-											<ul>
-												<li><a href="#">Admin</a></li>
-												<li><a href="#"><i class="fa fa-reply-all" aria-hidden="true"></i> Reply</a></li>
-											</ul>
+											
 											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget.Ut enim ad minima veniam,
 												quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis
 												autem vel eum iure reprehenderit.</p>
@@ -240,208 +224,49 @@
 			<div class="new_arrivals">
 				<h3>Featured Products</h3>
 				<!-- /womens -->
-				<div class="col-md-3 product-men women_two">
-					<div class="product-shoe-info shoe">
-						<div class="men-pro-item">
-							<div class="men-thumb-item">
-                                                             <h:graphicImage library="image" name="s7.jpg"/>
-<!--								<img src="images/s4.jpg" alt="">-->
-								<div class="men-cart-pro">
-									<div class="inner-men-cart-pro">
-										<a href="single.html" class="link-product-add-cart">Quick View</a>
-									</div>
-								</div>
-								<span class="product-new-top">New</span>
-							</div>
-							<div class="item-info-product">
-								<h4>
-									<a href="single.html">Shuberry Heels </a>
-								</h4>
-								<div class="info-product-price">
-									<div class="grid_meta">
-										<div class="product_price">
-											<div class="grid-price ">
-												<span class="money ">$575.00</span>
-											</div>
-										</div>
-										<ul class="stars">
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-										</ul>
-									</div>
-									<div class="shoe single-item hvr-outline-out">
-										<h:form >
-                                                                                    <h:inputHidden value="_cart"></h:inputHidden>
-                                                                                    <h:inputHidden value="1"></h:inputHidden>
-                                                                                    <h:inputHidden value="Shuberry Heels"></h:inputHidden>
-                                                                                    <h:inputHidden  value="575.00"></h:inputHidden>
-<!--											<button type="submit" class="shoe-cart pshoe-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>-->
+				<div class="owl-carousel owl-theme">
+                                    <c:forEach var="pro" items="#{productBean.product}">
+                                        <div class="item">
+                                            <div>
+                                                <div class="proif">
+                                                    <div class="image-pro">
+                                                        <h:graphicImage name="upload/#{pro.image}" library="image" style="width: 100%; height: 300px;"/>
+                                                    </div>
+                                                    <div class="sp-new">
+                                                        <span class="badge badge-danger">New</span>
+                                                    </div>
+                                                    <div class="name-pro">
+                                                        <h:link value="${pro.name}" styleClass="pro-link"/>
+                                                    </div>
+                                                    <div class="price-cart">
+                                                        <div class="price">
 
-<!--											<a href="#" data-toggle="modal" data-target="#myModal1"></a>-->
-										</h:form>
+                                                            <c:if test="${pro.sell>0}">
+                                                                <span>${pro.price-pro.price*pro.sell/100} VND</span>
+                                                            </c:if>
+                                                            <c:if test="${pro.sell==0}">
+                                                                <span>${pro.price} VND</span>
+                                                            </c:if>
+                                                        </div>
+                                                        <div class="btn-cart">
+                                                            <!--<button class="addcart btn btn-outline-success" id="addtocart" ><i class="fas fa-cart-plus"></i></button>-->
+                                                            <h:form>
+                                                                <h:commandButton styleClass="addcart btn btn-outline-success" value="add to cart">
+                                                                    <f:ajax listener="#{cartBean.addItemtoCart(pro. id, pro.name, pro.price)}" 
+                                                                            onevent="addSuccess(#{pro.id},'#{pro.name}',1,#{pro.price})"
+                                                                            />
 
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 product-men women_two">
-					<div class="product-shoe-info shoe">
-						<div class="men-pro-item">
-							<div class="men-thumb-item">
-                                                             <h:graphicImage library="image" name="s7.jpg"/>
-<!--								<img src="images/s5.jpg" alt="">-->
-								<div class="men-cart-pro">
-									<div class="inner-men-cart-pro">
-										<a href="single.html" class="link-product-add-cart">Quick View</a>
-									</div>
-								</div>
-								<span class="product-new-top">New</span>
-							</div>
-							<div class="item-info-product">
-								<h4>
-									<a href="single.html">Red Bellies </a>
-								</h4>
-								<div class="info-product-price">
-									<div class="grid_meta">
-										<div class="product_price">
-											<div class="grid-price ">
-												<span class="money ">$325.00</span>
-											</div>
-										</div>
-										<ul class="stars">
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-										</ul>
-									</div>
-<!--									<div class="shoe single-item hvr-outline-out">
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart">
-											<input type="hidden" name="add" value="1">
-											<input type="hidden" name="shoe_item" value="Red Bellies">
-											<input type="hidden" name="amount" value="325.00">
-											<button type="submit" class="shoe-cart pshoe-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
+                                                                </h:commandButton>
+                                                            </h:form>
+                                                        </div>
+                                                    </div>
 
-											<a href="#" data-toggle="modal" data-target="#myModal1"></a>
-										</form>
-
-									</div>-->
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 product-men women_two">
-					<div class="product-shoe-info shoe">
-						<div class="men-pro-item">
-							<div class="men-thumb-item">
-                                                             <h:graphicImage library="image" name="s7.jpg"/>
-<!--								<img src="images/s7.jpg" alt="">-->
-								<div class="men-cart-pro">
-									<div class="inner-men-cart-pro">
-										<a href="single.html" class="link-product-add-cart">Quick View</a>
-									</div>
-								</div>
-								<span class="product-new-top">New</span>
-							</div>
-							<div class="item-info-product">
-								<h4>
-									<a href="single.html">Running Shoes</a>
-								</h4>
-								<div class="info-product-price">
-									<div class="grid_meta">
-										<div class="product_price">
-											<div class="grid-price ">
-												<span class="money ">$875.00</span>
-											</div>
-										</div>
-										<ul class="stars">
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-										</ul>
-									</div>
-									<div class="shoe single-item hvr-outline-out">
-										<h:form>
-                                                                                    <h:inputHidden  value="_cart"></h:inputHidden>
-                                                                                    <h:inputHidden  value="1"></h:inputHidden>
-                                                                                    <h:inputHidden value="Running Shoes"></h:inputHidden>
-                                                                                    <h:inputHidden  value="875.00"></h:inputHidden>
-                                                                                    <h:commandButton type="submit" class="shoe-cart pshoe-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></h:commandButton>
-
-											<a href="#" data-toggle="modal" data-target="#myModal1"></a>
-										</h:form>
-
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 product-men women_two">
-					<div class="product-shoe-info shoe">
-						<div class="men-pro-item">
-							<div class="men-thumb-item">
-								 <h:graphicImage library="image" name="s7.jpg"/>
-								<div class="men-cart-pro">
-									<div class="inner-men-cart-pro">
-										<a href="single.html" class="link-product-add-cart">Quick View</a>
-									</div>
-								</div>
-								<span class="product-new-top">New</span>
-							</div>
-							<div class="item-info-product">
-								<h4>
-									<a href="single.html">Sukun Casuals</a>
-								</h4>
-								<div class="info-product-price">
-									<div class="grid_meta">
-										<div class="product_price">
-											<div class="grid-price ">
-												<span class="money ">$505.00</span>
-											</div>
-										</div>
-										<ul class="stars">
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-											<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-										</ul>
-									</div>
-									<div class="shoe single-item hvr-outline-out">
-                                                                            <h:form >
-                                                                                    <h:inputHidden  value="_cart"></h:inputHidden>
-                                                                                    <h:inputHidden value="1"></h:inputHidden>
-                                                                                    <h:inputHidden  value="Sukun Casuals"></h:inputHidden>
-                                                                                    <h:inputHidden  value="505.00"></h:inputHidden>
-                                                                                    <h:commandButton type="submit" class="shoe-cart pshoe-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></h:commandButton>
-
-											<a href="#" data-toggle="modal" data-target="#myModal1"></a>
-										</h:form>
-
-									</div>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- //womens -->
-				<div class="clearfix"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </c:forEach>
+                                </div>
+				
 			</div>
 			<!--//new_arrivals-->
 
