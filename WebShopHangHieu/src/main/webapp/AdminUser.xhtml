@@ -12,6 +12,9 @@
          <ui:composition template="templates/AdminBase.xhtml"
                          >
                                <ui:define name="AdminCategory">
+                                   <f:metadata>
+                     <f:viewAction action="#{userBean.checkLoginAdmin()}"></f:viewAction>
+                    </f:metadata>
                  <div class="right-ad">
 <!--                    <div class="button-contro">
                             <h:link value="Add Category" styleClass="btn btn-outline-success"
@@ -51,18 +54,18 @@
                                
                            </h:column>
                             
-                           <h:column>
+<!--                           <h:column>
                                <f:facet name="header">Action</f:facet>
                                <h:form styleClass="form-inline">
                                    <h:link value="Detail" styleClass="btn btn-info"
                                            includeViewParams="true"
                                        outcome="AdminProductDetail?faces-redirect=true">
-                                       <!--<f:param name="product_id" value="${pro.id}"/>-->
+                                       <f:param name="product_id" value="${pro.id}"/>
                                    </h:link>
 
                                   
                                </h:form>
-                           </h:column>
+                           </h:column>-->
                        </h:dataTable>
                         
                     </div>

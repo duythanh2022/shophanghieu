@@ -11,6 +11,9 @@
     <h:body>
          <ui:composition template="templates/AdminBase.xhtml">
              <ui:define name="AdminCategory">
+                 <f:metadata>
+                     <f:viewAction action="#{userBean.checkLoginAdmin()}"></f:viewAction>
+                    </f:metadata>
                  <div class="right-ad">
                     <h:form enctype="multipart/form-data">
                     <!-- Modal Header -->
@@ -69,7 +72,12 @@
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <h:commandButton value="Thêm" styleClass="btn btn-outline-success" 
+                                         action="#{productBean.addOrUpdateProduct()}"></h:commandButton>
+                      <h:link value="Black" styleClass="btn btn-danger"
+                                           includeViewParams="true"
+                                       outcome="AdminProduct?faces-redirect=true">
+                                   </h:link>
                     </div>
                     </h:form>
 

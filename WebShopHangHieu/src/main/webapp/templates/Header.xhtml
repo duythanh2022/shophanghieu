@@ -57,6 +57,11 @@
                                        outcome="Register.xhtml?faces-redirect=true"></h:link>
             </c:if>
             <c:if test="#{facesContext.externalContext.sessionMap.get('user')!=null}">
+                <c:if test="#{facesContext.externalContext.sessionMap.get('user').roll==0}">
+                    <h:link styleClass="btn btn-outline-info" value="Admin" 
+                              includeViewParams="true"
+                                       outcome="AdminLogin.xhtml?faces-redirect=true"></h:link>
+                </c:if>
                 <h:link styleClass="btn btn-outline-warning" 
                         value="#{facesContext.externalContext.sessionMap.get('user').fullname}" 
                               ></h:link>

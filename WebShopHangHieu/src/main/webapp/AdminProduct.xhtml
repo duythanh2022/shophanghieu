@@ -12,6 +12,9 @@
          <ui:composition template="templates/AdminBase.xhtml"
                          >
                                <ui:define name="AdminCategory">
+                    <f:metadata>
+                     <f:viewAction action="#{userBean.checkLoginAdmin()}"></f:viewAction>
+                    </f:metadata>
                  <div class="right-ad">
                     <div class="button-contro">
             <!--                <h:link value="Add Category" styleClass="btn btn-outline-success"
@@ -36,16 +39,20 @@
                                #{pro.id}
                            </h:column>
                            <h:column>
-                               <f:facet name="header">User</f:facet>
+                               <f:facet name="header">Name</f:facet>
                                #{pro.name}
                            </h:column>
+                            <h:column>
+                               <f:facet name="header">Brand</f:facet>
+                               #{pro.brand.name}
+                           </h:column>
                            <h:column>
-                               <f:facet name="header">Tong don hang</f:facet>
+                               <f:facet name="header">Color</f:facet>
                                #{pro.color}
                            </h:column>
                             
                             <h:column>
-                               <f:facet name="header">ngay</f:facet>
+                               <f:facet name="header">Price</f:facet>
                                #{pro.price}
                            </h:column>
                             
@@ -57,6 +64,8 @@
                                        outcome="AdminProductDetail?faces-redirect=true">
                                        <f:param name="product_id" value="${pro.id}"/>
                                    </h:link>
+                                   <h:commandLink value="Delete" styleClass="btn btn-danger" actionListener="${productBean.deleteProduct(pro)}">
+                                    </h:commandLink>
                                </h:form>
                            </h:column>
                        </h:dataTable>

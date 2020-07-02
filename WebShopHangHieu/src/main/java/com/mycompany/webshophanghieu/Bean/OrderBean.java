@@ -32,6 +32,7 @@ public class OrderBean {
     private int id;
     private long date;
     private long total;
+    private User user;
     private static final OrderService orService=new OrderService();
     /**
      * Creates a new instance of OrderBean
@@ -43,8 +44,9 @@ public class OrderBean {
             if (proid!=null&&proid!="") {
                 Orders or=orService.getOrderByID(Integer.parseInt(proid));
                 this.id=or.getId();
-                this.date=or.getId();
+                this.date=or.getDateod();
                 this.total=or.getTotal();
+                this.user=or.getUserid();
             }
         }
     }
@@ -123,6 +125,14 @@ public class OrderBean {
 
     public void setTotal(long total) {
         this.total = total;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public int getId() {

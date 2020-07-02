@@ -22,8 +22,10 @@ import javax.persistence.Transient;
 @Named(value = "userBean")
 @RequestScoped
 public class UserBean {
-
-    
+//    admin
+    private String emailAdmin;
+    private String passAdmin;
+//    index
     private String email;
     private String fullname;
     private String phone;
@@ -40,29 +42,47 @@ public class UserBean {
     }
     
     public String register(){
+        
         if (!this.pass.isEmpty()&&this.pass.equals(this.passConfirm)) {
-            User user=new User();
-            user.setEmail(email);
-            user.setPass(pass);
-            user.setFullname(fullname);
-            user.setAddress(address);
-            user.setPhone(phone);
-            user.setRoll(1);
-            if (uService.adduser(user)) {
-                return "Login?faces-redirect=true";
+            if(uService.checkUser(email)==null){
+                User user=new User();
+                user.setEmail(email);
+                user.setPass(pass);
+                user.setFullname(fullname);
+                user.setAddress(address);
+                user.setPhone(phone);
+                user.setRoll(1);
+                if (uService.adduser(user)) {
+                    return "Login?faces-redirect=true";
+                }
             }
-            
         }
         return "Register";
     }
     
     public String login(){
-        User user=uService.login(email, pass);
+        User user=uService.login(email, pass);  
         if (user!=null) {
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", user);
             return "index?faces-redirect=true";
         }
         return "Login";
+    }
+    public String loginAdmin(){
+        User user=uService.login(emailAdmin, passAdmin);
+        if (user!=null&&user.getRoll()==0) {
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("useradmin", user);
+            return "AdminProduct?faces-redirect=true";
+        }
+        return "Login";
+    }
+    public String checkLoginAdmin(){
+        User user=(User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("useradmin");
+        if (user==null) {
+            
+            return "AdminLogin";
+        }
+        return "";
     }
     public String checkLogin(){
         User user=(User) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("user");
@@ -128,6 +148,30 @@ public class UserBean {
 
     public void setPassConfirm(String passConfirm) {
         this.passConfirm = passConfirm;
+    }
+
+    public String getEmailAdmin() {
+        return emailAdmin;
+    }
+
+    public void setEmailAdmin(String emailAdmin) {
+        this.emailAdmin = emailAdmin;
+    }
+
+    public String getPassAdmin() {
+        return passAdmin;
+    }
+
+    public void setPassAdmin(String passAdmin) {
+        this.passAdmin = passAdmin;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
     
     

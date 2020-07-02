@@ -11,48 +11,90 @@
     <h:body>
          <ui:composition template="templates/AdminBase.xhtml">
              <ui:define name="AdminCategory">
+                 <f:metadata>
+                     <f:viewAction action="#{userBean.checkLoginAdmin()}"></f:viewAction>
+                    </f:metadata>
                  <div class="right-ad">
                     <h:form enctype="multipart/form-data">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                      <h4 class="modal-title">Product</h4>
+                      <h4 class="modal-title">OrderDetail</h4>
                       
                     </div>
 
                     <!-- Modal body -->
                     
                     <div class="modal-body">
-                        <h:inputHidden value="#{orderBean.id}"/>
-                        <h:dataTable var="od" value="#{orderBean.orderDetail}" styleClass="table table-striped">
-                        <h:column>
-                            <f:facet name="header">Ma SP</f:facet>
-                            #{od.product.id}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Name</f:facet>
-                            #{od.product.name}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">So luong</f:facet>
-                             #{od.amountDetail}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Don Gia</f:facet>
-                            #{od.unitPrice}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Thanh Tien</f:facet>
-                            #{od.totalDetail}
-                        </h:column>
-                        
-                    </h:dataTable>
+                        <div>
+                        <!--<h:inputHidden value="#{orderBean.id}"/>-->
+                            <h:dataTable var="od" value="#{orderBean.orderDetail}" styleClass="table table-striped">
+                                <h:column>
+                                    <f:facet name="header">Ma SP</f:facet>
+                                    #{od.product.id}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Name</f:facet>
+                                    #{od.product.name}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">So luong</f:facet>
+                                     #{od.amountDetail}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Don Gia</f:facet>
+                                    #{od.unitPrice}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Thanh Tien</f:facet>
+                                    #{od.totalDetail}
+                                </h:column>
+
+                            </h:dataTable>
+                        </div>
+                        <div class="container">
+                            <div class="pro-out">
+                                <div>
+                                    <ul>
+                                        <li class="d-flex">
+                                            <h5 class="mr-auto">Tong tien: </h5>
+                                            <h:outputText value=" #{orderBean.total} " style="font-size: 18px; width: 20%;"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3>Thong tin khach hang</h3>
+                                    <h:form>
+                                        <div class="form-group">
+                                            <h:outputText value="Email" />
+                                            <h:inputText value="#{orderBean.user.email}" styleClass="form-control" disabled="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <h:outputText value="Name" />
+                                            <h:inputText value="#{orderBean.user.fullname}" styleClass="form-control" disabled="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <h:outputText value="Phone" />
+                                            <h:inputText value="#{orderBean.user.phone}" styleClass="form-control" disabled="true"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <h:outputText value="Address" />
+                                            <h:inputText value="#{orderBean.user.address}" styleClass="form-control" disabled="true"/>
+                                        </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                        <h:commandButton value="Thêm" styleClass="btn btn-outline-success" 
-                                         action="#{productBean.addOrUpdateProduct()}"></h:commandButton>
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        
+                      <!--<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>-->
+                      <h:link value="Black" styleClass="btn btn-danger"
+                                           includeViewParams="true"
+                                       outcome="AdminOrder?faces-redirect=true">
+                                   </h:link>
                     </div>
                     </h:form>
 

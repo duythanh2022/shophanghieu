@@ -68,4 +68,22 @@ public class UserService {
        
         
     }
+    public User checkUser(String email){
+//        pass=DigestUtils.md5Hex(pass);
+        try(Session session=factory.openSession()){
+            try{
+                CriteriaBuilder builder=session.getCriteriaBuilder();
+                CriteriaQuery<User> query=builder.createQuery(User.class);
+                Root<User> root=query.from(User.class);
+                query.select(root);
+                query.where(builder.equal(root.get("email").as(String.class), email));
+                return session.createQuery(query).getSingleResult();
+                }catch(Exception ex){
+                    return null;
+                }
+        }
+       
+        
+    }
+    
 }

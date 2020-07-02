@@ -41,7 +41,7 @@ public class OrderService {
     public List<OrderDetail> getOrderDetailByOreder(Orders orders){
 //        kw=String.format("*/ %s kw);
         try(Session session=seFactory.openSession()){
-            String hql="FROM order_detail od Where od.order.id="+orders.getId();
+            String hql="FROM OrderDetail od Where od.order.id="+orders.getId();
             Query query=session.createQuery(hql);
             return query.getResultList();
         }
